@@ -16,7 +16,7 @@ const Navbar = ({ activeSection, scrollToSection }) => {
       position="fixed"
       elevation={0}
       sx={{
-        background: "rgba(10,25,47,0.6)",
+        background: "#0C2B4E",
         backdropFilter: "blur(12px)",
         px: 4,
       }}
