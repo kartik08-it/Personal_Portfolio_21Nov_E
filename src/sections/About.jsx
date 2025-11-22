@@ -1,4 +1,3 @@
-// src/sections/About.jsx
 import React from "react";
 import { Box, Grid, Paper, Typography } from "@mui/material";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";

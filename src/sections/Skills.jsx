@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Grid,
-  Paper,
-  Typography,
-  Chip,
-  Stack,
-} from "@mui/material";
+import { Box, Paper, Typography, Chip, Stack } from "@mui/material";
 
 // OFFICIAL LINKS FOR EACH SKILL
 const skillLinks = {
@@ -15,46 +8,37 @@ const skillLinks = {
   Python: "https://www.python.org/",
   Flask: "https://flask.palletsprojects.com/",
   "Node.js": "https://nodejs.org/",
-  "Express.js": "https://expressjs.com/",
   FastAPI: "https://fastapi.tiangolo.com/",
   HTML5: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5",
   CSS3: "https://developer.mozilla.org/en-US/docs/Web/CSS",
   JavaScript: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   "React.js": "https://react.dev/",
-  "Vue.js": "https://vuejs.org/",
   TypeScript: "https://www.typescriptlang.org/",
-  "Tailwind CSS": "https://tailwindcss.com/",
   MySQL: "https://www.mysql.com/",
   MongoDB: "https://www.mongodb.com/",
-  PostgreSQL: "https://www.postgresql.org/",
-  Redis: "https://redis.io/",
+  AWS: "https://aws.amazon.com/",
 };
 
-// GROUP DEFINITIONS
+// GROUPS
 const skillGroups = [
   {
     title: "Backend Development",
-    items: ["PHP", "Laravel", "Python", "Flask", "Node.js", "Express.js", "FastAPI"],
+    items: ["PHP", "Laravel", "Python", "Flask", "Node.js", "FastAPI"],
   },
   {
     title: "Frontend Development",
-    items: [
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "React.js",
-      "Vue.js",
-      "TypeScript",
-      "Tailwind CSS",
-    ],
+    items: ["HTML5", "CSS3", "JavaScript", "React.js", "TypeScript"],
   },
   {
     title: "Databases",
-    items: ["MySQL", "MongoDB", "PostgreSQL", "Redis"],
+    items: ["MySQL", "MongoDB"],
+  },
+  {
+    title: "Cloud",
+    items: ["AWS"],
   },
 ];
 
-// SKILL CARD COMPONENT
 const SkillItem = ({ name }) => (
   <Box
     onClick={() => window.open(skillLinks[name], "_blank")}
@@ -64,38 +48,38 @@ const SkillItem = ({ name }) => (
       alignItems: "center",
       p: 1.5,
       borderRadius: 2,
-      border: "1px solid rgba(255,255,255,0.08)",
-      background: "rgba(255,255,255,0.02)",
+      border: "1px solid rgba(255,255,255,0.1)",
+      background: "rgba(255,255,255,0.03)",
       cursor: "pointer",
-      transition: "all 0.25s ease",
+      transition: "0.25s",
       "&:hover": {
-        transform: "scale(1.04)",
-        boxShadow: "0 0 12px rgba(0,200,255,0.4)",
-        background: "rgba(0,200,255,0.05)",
+        transform: "scale(1.05)",
+        boxShadow: "0px 0px 12px rgba(0,200,255,0.4)",
       },
     }}
   >
-    <Typography sx={{ fontWeight: 500 }}>{name}</Typography>
+    <Typography>{name}</Typography>
     <Chip label="Expert" size="small" />
   </Box>
 );
 
-// SKILL GROUP (CARD)
 const GroupCard = ({ group }) => (
   <Paper
     elevation={2}
     sx={{
       p: 3,
       borderRadius: 3,
-      minHeight: 380, // equal height
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-start",
+      minWidth: 260,      
+      height: 420,        
+      overflowY: "auto",  
+      flexShrink: 0,      
+      mr: 3,              
     }}
   >
     <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
       {group.title}
     </Typography>
+
     <Stack spacing={1}>
       {group.items.map((item) => (
         <SkillItem key={item} name={item} />
@@ -111,17 +95,23 @@ const Skills = () => (
       Technical Skills
     </Typography>
 
-    <Grid
-      container
-      spacing={4}
-      justifyContent="center"   // CENTER THE THREE CARDS
+    <Box
+      sx={{
+        display: "flex",
+        overflowX: "auto",
+        gap: 2,
+        px: 2,
+        pb: 1,
+        scrollSnapType: "x mandatory",
+        justifyContent:"center" 
+      }}
     >
       {skillGroups.map((group) => (
-        <Grid item xs={12} md={4} key={group.title}>
+        <Box key={group.title} sx={{ scrollSnapAlign: "start"}}>
           <GroupCard group={group} />
-        </Grid>
+        </Box>
       ))}
-    </Grid>
+    </Box>
   </Box>
 );
 

@@ -55,7 +55,7 @@ const Footer = () => {
               border: "1px solid rgba(255,255,255,0.2)",
               borderRadius: 2,
             }}
-            onClick={() => window.open("https://linkedin.com/in/kartik", "_blank")}
+            onClick={() => window.open("https://linkedin.com/in/kartikUpadhayay", "_blank")}
           >
             <LinkedInIcon />
           </IconButton>
