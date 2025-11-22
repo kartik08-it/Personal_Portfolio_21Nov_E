@@ -1,4 +1,5 @@
 import { AppBar, Toolbar, Typography, Box, Button } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const navItems = [
@@ -11,19 +12,23 @@ const navItems = [
 ];
 
 const Navbar = ({ activeSection, scrollToSection }) => {
+  const theme = useTheme(); // ← GET CURRENT THEME
+
   return (
     <AppBar
       position="fixed"
       elevation={0}
       sx={{
-        background: "#0C2B4E",
+        background: theme.palette.background.paper, // ← THEME-BASED COLOR
+        color: theme.palette.text.primary,
         backdropFilter: "blur(12px)",
         px: 4,
+        transition: "all 0.3s ease", // smooth theme change
       }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         
-        {/* Left */}
+        {/* Left – Name */}
         <Typography variant="h6" sx={{ fontWeight: 600 }}>
           Kartik Gaur
         </Typography>
@@ -36,8 +41,12 @@ const Navbar = ({ activeSection, scrollToSection }) => {
               onClick={() => scrollToSection(item.id)}
               sx={{
                 textTransform: "none",
-                color: activeSection === item.id ? "#0ea5e9" : "white",
-                fontWeight: activeSection === item.id ? 600 : 400,
+                color:
+                  activeSection === item.id
+                    ? theme.palette.primary.main // active color
+                    : theme.palette.text.primary, // default text color
+                fontWeight: activeSection === item.id ? 700 : 400,
+                transition: "color 0.3s ease",
               }}
             >
               {item.label}
@@ -45,7 +54,7 @@ const Navbar = ({ activeSection, scrollToSection }) => {
           ))}
         </Box>
 
-        {/* Toggle */}
+        {/* Theme Toggle */}
         <ThemeToggle />
       </Toolbar>
     </AppBar>

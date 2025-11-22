@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Grid,
-  Paper,
-  Typography,
-  Chip,
-  Stack,
-} from "@mui/material";
+import { Box, Grid, Paper, Typography, Chip, Stack } from "@mui/material";
 
 // OFFICIAL LINKS FOR EACH SKILL
 const skillLinks = {
@@ -34,23 +27,20 @@ const skillLinks = {
 const skillGroups = [
   {
     title: "Backend Development",
-    items: ["PHP", "Laravel", "Python", "Flask", "Node.js", "Express.js", "FastAPI"],
+    items: ["PHP", "Laravel", "Python", "Flask", "Node.js", "FastAPI"],
   },
   {
     title: "Frontend Development",
-    items: [
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "React.js",
-      "Vue.js",
-      "TypeScript",
-      "Tailwind CSS",
-    ],
+    items: ["HTML5", "CSS3", "JavaScript", "React.js", "TypeScript"],
   },
   {
     title: "Databases",
-    items: ["MySQL", "MongoDB", "PostgreSQL", "Redis"],
+    items: ["MySQL", "MongoDB"],
+  },
+
+  {
+    title: "Cloud",
+    items: ["AWS"],
   },
 ];
 
@@ -87,7 +77,7 @@ const GroupCard = ({ group }) => (
     sx={{
       p: 3,
       borderRadius: 3,
-      minHeight: 380, // equal height
+      minHeight: 450,
       display: "flex",
       flexDirection: "column",
       justifyContent: "flex-start",
@@ -114,10 +104,10 @@ const Skills = () => (
     <Grid
       container
       spacing={4}
-      justifyContent="center"   // CENTER THE THREE CARDS
+      justifyContent="center"
     >
       {skillGroups.map((group) => (
-        <Grid item xs={12} md={4} key={group.title}>
+        <Grid item xs={12} md={4} key={group.title} sx={{width:"15%"}}>
           <GroupCard group={group} />
         </Grid>
       ))}

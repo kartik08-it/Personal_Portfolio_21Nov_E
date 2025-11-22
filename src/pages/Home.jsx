@@ -20,6 +20,9 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { Chip } from "@mui/material";
+import CodeIcon from "@mui/icons-material/Code";
+
 const Home = ({ setActiveSection }) => {
   const aboutRef = useRef(null);
   const experienceRef = useRef(null);
@@ -73,9 +76,21 @@ const Home = ({ setActiveSection }) => {
         >
           {/* LEFT SIDE */}
           <Box flex={1}>
-            <Typography variant="h5" sx={{ opacity: 0.8 }}>
-              Passionate Full Stack Developer
-            </Typography>
+            <Chip
+              icon={<CodeIcon />}
+              label={
+                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                  Full Stack Developer
+                </Typography>
+              }
+              sx={{
+                py: 2,
+                px: 3,
+                borderRadius: 3,
+                "& .MuiChip-icon": { fontSize: "1.8rem" },
+                bgcolor: "rgba(255,255,255,0.05)",
+              }}
+            />
 
             <Typography
               variant="h3"
@@ -86,8 +101,7 @@ const Home = ({ setActiveSection }) => {
                 maxWidth: "550px",
               }}
             >
-               Hi, I'm <span style={{ color: "#0ea5e9" }}>Kartik Upadhayay</span>
-             
+              Hi, I'm <span style={{ color: "#0ea5e9" }}>Kartik Upadhayay</span>
             </Typography>
 
             <Typography sx={{ mt: 3, opacity: 0.75, maxWidth: "550px" }}>
