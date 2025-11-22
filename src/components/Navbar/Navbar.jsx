@@ -1,5 +1,20 @@
-import { AppBar, Toolbar, Typography, Box, Button } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from "@mui/material";
+
+import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
+import { useState } from "react";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const navItems = [
@@ -12,52 +27,117 @@ const navItems = [
 ];
 
 const Navbar = ({ activeSection, scrollToSection }) => {
-  const theme = useTheme(); // ← GET CURRENT THEME
+  const theme = useTheme();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  // Toggle drawer
+  const toggleDrawer = (open) => () => {
+    setDrawerOpen(open);
+  };
 
   return (
-    <AppBar
-      position="fixed"
-      elevation={0}
-      sx={{
-        background: theme.palette.background.paper, // ← THEME-BASED COLOR
-        color: theme.palette.text.primary,
-        backdropFilter: "blur(12px)",
-        px: 4,
-        transition: "all 0.3s ease", // smooth theme change
-      }}
-    >
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        
-        {/* Left – Name */}
-        <Typography variant="h6" sx={{ fontWeight: 600 }}>
-          Kartik Gaur
-        </Typography>
+    <>
+      {/* TOP NAV */}
+      <AppBar
+        position="fixed"
+        elevation={0}
+        sx={{
+          background: theme.palette.background.paper,
+          color: theme.palette.text.primary,
+          backdropFilter: "blur(12px)",
+          px: { xs: 2, md: 4 },
+          transition: "all 0.3s ease",
+        }}
+      >
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          
+          {/* LEFT: Name */}
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: 700,
+              fontSize: { xs: "1.1rem", md: "1.3rem" },
+            }}
+          >
+            Kartik Gaur
+          </Typography>
 
-        {/* Nav items */}
-        <Box sx={{ display: "flex", gap: 3 }}>
-          {navItems.map((item) => (
-            <Button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              sx={{
-                textTransform: "none",
-                color:
-                  activeSection === item.id
-                    ? theme.palette.primary.main // active color
-                    : theme.palette.text.primary, // default text color
-                fontWeight: activeSection === item.id ? 700 : 400,
-                transition: "color 0.3s ease",
-              }}
+          {/* DESKTOP NAVIGATION */}
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              gap: 3,
+            }}
+          >
+            {navItems.map((item) => (
+              <Button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                sx={{
+                  textTransform: "none",
+                  color:
+                    activeSection === item.id
+                      ? theme.palette.primary.main
+                      : theme.palette.text.primary,
+                  fontWeight: activeSection === item.id ? 700 : 400,
+                  transition: "color 0.3s ease",
+                }}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </Box>
+
+          {/* RIGHT SIDE: Theme toggle + Hamburger (mobile) */}
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <ThemeToggle />
+
+            {/* HAMBURGER ICON for Mobile */}
+            <IconButton
+              sx={{ display: { xs: "block", md: "none" } }}
+              onClick={toggleDrawer(true)}
             >
-              {item.label}
-            </Button>
-          ))}
-        </Box>
+              <MenuIcon />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
 
-        {/* Theme Toggle */}
-        <ThemeToggle />
-      </Toolbar>
-    </AppBar>
+      {/* MOBILE DRAWER */}
+      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+        <Box sx={{ width: 240, p: 2 }}>
+          <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>
+            Menu
+          </Typography>
+
+          <List>
+            {navItems.map((item) => (
+              <ListItem key={item.id} disablePadding>
+                <ListItemButton
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    setDrawerOpen(false);
+                  }}
+                >
+                  <ListItemText
+                    primary={item.label}
+                    sx={{
+                      "& span": {
+                        color:
+                          activeSection === item.id
+                            ? theme.palette.primary.main
+                            : theme.palette.text.primary,
+                        fontWeight: activeSection === item.id ? 700 : 400,
+                      },
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
+    </>
   );
 };
 

@@ -66,7 +66,7 @@ const Home = ({ setActiveSection }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          px: 8,
+          px: { xs: 2, sm: 4, md: 8 },
         }}
       >
         <Stack
