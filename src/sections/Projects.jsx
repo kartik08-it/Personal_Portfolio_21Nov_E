@@ -5,43 +5,74 @@ import CodeIcon from "@mui/icons-material/Code";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    desc: "Full-featured ecommerce solution with real-time inventory management, payment processing, and order tracking.",
-    impact: "Increased sales by 40% and reduced cart abandonment by 25%",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop",
+    title: "Admin 2.0 Interface",
+    desc: "Redesigned a modular and scalable admin dashboard used internally for managing core application workflows.",
+    impact:
+      "Reduced data load time by 35% and simplified feature maintenance across teams.",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
     features: [
-      "Real-time inventory",
-      "Payment gateway",
-      "Admin dashboard",
-      "Email notifications",
+      "Advanced CRUD",
+      "Dynamic Forms",
+      "Role-Based Access",
+      "Reusable Components",
     ],
-    stack: ["React.js", "Node.js", "MongoDB", "Stripe", "Redis", "AWS"],
+    stack: ["React.js", "Material UI", "TypeScript", "REST APIs"],
   },
   {
-    title: "Task Management System",
-    desc: "Collaborative project management with real-time updates, team workspaces, and analytics dashboards.",
-    impact: "Improved team productivity by 35% based on user surveys",
-    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
+    title: "Proctor Panel",
+    desc: "Built a real-time proctoring panel for live candidate monitoring during online assessments.",
+    impact:
+      "Improved event response latency by 50%, enabling faster and more reliable session tracking.",
+    img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=500&fit=crop",
     features: [
-      "Real-time collaboration",
-      "Kanban boards",
-      "Time tracking",
-      "Analytics dashboard",
+      "Live Monitoring",
+      "WebSocket Events",
+      "Session Tracking",
+      "Real-time Alerts",
     ],
-    stack: ["Laravel", "Vue.js", "MySQL", "WebSocket", "Docker"],
+    stack: ["React.js", "TypeScript", "WebSockets", "Material UI"],
   },
   {
-    title: "Content Management System",
-    desc: "Custom CMS with drag-and-drop page builder, SEO tools, and multi-language support. Powers 500+ websites.",
-    impact: "Reduced content publishing time by 60%",
-    img: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop",
+    title: "API Migration (SOAP to REST)",
+    desc: "Led migration of legacy SOAP-based services to modern RESTful APIs with improved scalability and maintainability.",
+    impact:
+      "Increased request throughput and reduced server load across critical services.",
+    img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=500&fit=crop",
     features: [
-      "Drag-and-drop builder",
-      "SEO optimization",
-      "Multi-language",
-      "Media library",
+      "REST Architecture",
+      "Async Queues",
+      "Middleware",
+      "API Optimization",
     ],
-    stack: ["PHP", "MySQL", "JavaScript", "Bootstrap", "AWS S3"],
+    stack: ["Laravel", "PHP", "REST APIs", "MySQL"],
+  },
+  {
+    title: "SuperAdmin Panel",
+    desc: "Developed a secure full-stack SuperAdmin system for managing users, roles, and system configurations.",
+    impact:
+      "Improved data transparency and integrity with granular permissions and audit visibility.",
+    img: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=800&h=500&fit=crop",
+    features: [
+      "Role Management",
+      "2FA Authentication",
+      "Audit Logs",
+      "System Alerts",
+    ],
+    stack: ["Laravel", "React.js", "Google Authenticator", "RBAC"],
+  },
+  {
+    title: "Email Template System",
+    desc: "Created dynamic and brand-aligned email templates for transactional and notification workflows.",
+    impact:
+      "Improved click-through rates by 20% with consistent and responsive email layouts.",
+    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=500&fit=crop",
+    features: [
+      "Reusable Templates",
+      "Blade Components",
+      "Dynamic Content",
+      "Brand Consistency",
+    ],
+    stack: ["Laravel Blade", "HTML", "CSS", "Email Systems"],
   },
 ];
 
@@ -52,6 +83,7 @@ const ProjectCard = ({ p }) => (
       borderRadius: 3,
       overflow: "hidden",
       mx: "auto",
+      minHeight:700
     }}
   >
     <Box
@@ -81,8 +113,8 @@ const ProjectCard = ({ p }) => (
           className="action-buttons"
           sx={{
             position: "absolute",
-            top: 16,
-            right: 16,
+            top: 100,
+            right: 50,
             display: "flex",
             gap: 1.5,
 

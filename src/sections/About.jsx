@@ -3,6 +3,9 @@ import { Box, Grid, Paper, Typography } from "@mui/material";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import CodeIcon from "@mui/icons-material/Code";
 import PeopleIcon from "@mui/icons-material/People";
+import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import GroupsIcon from "@mui/icons-material/Groups";
 
 const StatCard = ({ icon, title, subtitle }) => (
   <Paper
@@ -10,7 +13,7 @@ const StatCard = ({ icon, title, subtitle }) => (
     sx={{
       p: 3,
       background: (theme) => theme.palette.background.paper,
-      borderRadius: 2,
+      borderRadius: 10,
       display: "flex",
       gap: 2,
       alignItems: "center",
@@ -42,44 +45,60 @@ const About = () => {
 
       <Paper
         sx={{
-          p: 4,
+          pb: 4,
+          pt: .5,
           borderRadius: 4,
           background: (t) => t.palette.background.paper,
         }}
         elevation={2}
       >
         <Grid
-  container
-  spacing={3}
-  justifyContent="space-evenly"   // PERFECT EVEN SPACING
-  alignItems="center"
-  textAlign="center"
->
-  <Grid item xs={12} md={3}>
-    <StatCard
-      icon={<WorkOutlineIcon sx={{ color: "primary.main" }} />}
-      title="8+ Years"
-      subtitle="Experience"
-    />
-  </Grid>
+          container
+          spacing={3}
+          justifyContent="space-evenly"
+          alignItems="center"
+          sx={{ mt: 5 }}
+        >
+          <Grid item xs={12} md={2.2}>
+            <StatCard
+              icon={<WorkOutlineIcon color="primary" />}
+              title="2+ Years"
+              subtitle="Industry Experience"
+            />
+          </Grid>
 
-  <Grid item xs={12} md={3}>
-    <StatCard
-      icon={<CodeIcon sx={{ color: "primary.main" }} />}
-      title="50+"
-      subtitle="Projects Completed"
-    />
-  </Grid>
+          <Grid item xs={12} md={2.2}>
+            <StatCard
+              icon={<CodeIcon color="primary" />}
+              title="40+"
+              subtitle="Features & Modules"
+            />
+          </Grid>
 
-  <Grid item xs={12} md={3}>
-    <StatCard
-      icon={<PeopleIcon sx={{ color: "primary.main" }} />}
-      title="30+"
-      subtitle="Happy Clients"
-    />
-  </Grid>
-</Grid>
+          <Grid item xs={12} md={2.2}>
+            <StatCard
+              icon={<SettingsSuggestIcon color="primary" />}
+              title="Production"
+              subtitle="Enterprise Systems"
+            />
+          </Grid>
 
+          <Grid item xs={12} md={2.2}>
+            <StatCard
+              icon={<TrendingUpIcon color="primary" />}
+              title="45%+"
+              subtitle="Performance Gains"
+            />
+          </Grid>
+
+          <Grid item xs={12} md={2.2}>
+            <StatCard
+              icon={<GroupsIcon color="primary" />}
+              title="Agile"
+              subtitle="Cross-Team Delivery"
+            />
+          </Grid>
+        </Grid>
       </Paper>
     </Box>
   );

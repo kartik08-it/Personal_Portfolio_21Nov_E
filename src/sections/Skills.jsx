@@ -1,7 +1,9 @@
 import React from "react";
 import { Box, Paper, Typography, Chip, Stack } from "@mui/material";
 
-// OFFICIAL LINKS FOR EACH SKILL
+/* ----------------------------------
+   OFFICIAL LINKS FOR EACH SKILL
+---------------------------------- */
 const skillLinks = {
   PHP: "https://www.php.net/",
   Laravel: "https://laravel.com/",
@@ -17,51 +19,127 @@ const skillLinks = {
   MySQL: "https://www.mysql.com/",
   MongoDB: "https://www.mongodb.com/",
   AWS: "https://aws.amazon.com/",
+  "RESTful APIs": "https://restfulapi.net/",
+  SOAP: "https://www.w3.org/TR/soap/",
+  "Material-UI": "https://mui.com/",
+  WordPress: "https://wordpress.org/",
+  Git: "https://git-scm.com/",
+  GitHub: "https://github.com/",
+  Postman: "https://www.postman.com/",
+  "Ubuntu/Linux": "https://ubuntu.com/",
+  "Agile/Scrum": "https://www.scrum.org/",
 };
 
-// GROUPS
+const ADVANCED = [
+  "PHP",
+  "Laravel",
+  "React.js",
+  "JavaScript",
+  "TypeScript",
+  "MySQL",
+  "RESTful APIs",
+  "SOAP",
+];
+
+const INTERMEDIATE = [
+  "HTML5",
+  "CSS3",
+  "Python",
+  "Flask",
+  "Material-UI",
+  "WordPress",
+  "Git",
+  "GitHub",
+  "Postman",
+  "Ubuntu/Linux",
+  "Agile/Scrum",
+];
+
+/* ----------------------------------
+   SKILL GROUPS
+---------------------------------- */
 const skillGroups = [
   {
     title: "Backend Development",
-    items: ["PHP", "Laravel", "Python", "Flask", "Node.js", "FastAPI"],
+    items: ["PHP", "Laravel", "Python", "Flask", "RESTful APIs", "SOAP"],
   },
   {
     title: "Frontend Development",
-    items: ["HTML5", "CSS3", "JavaScript", "React.js", "TypeScript"],
+    items: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "React.js",
+      "TypeScript",
+      "Material-UI",
+      "WordPress",
+    ],
   },
   {
     title: "Databases",
     items: ["MySQL", "MongoDB"],
   },
   {
-    title: "Cloud",
+    title: "Tools & Platforms",
+    items: ["Git", "GitHub", "Postman", "Ubuntu/Linux", "Agile/Scrum"],
+  },
+  {
+    title: "Cloud Services",
     items: ["AWS"],
   },
 ];
 
-const SkillItem = ({ name }) => (
-  <Box
-    onClick={() => window.open(skillLinks[name], "_blank")}
-    sx={{
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      p: 1.5,
-      borderRadius: 2,
-      border: "1px solid rgba(255,255,255,0.1)",
-      background: "rgba(255,255,255,0.03)",
-      cursor: "pointer",
-      transition: "0.25s",
-      "&:hover": {
-        transform: "scale(1.05)",
-        boxShadow: "0px 0px 12px rgba(0,200,255,0.4)",
-      },
-    }}
-  >
-    <Typography>{name}</Typography>
-    <Chip label="Expert" size="small" />
-  </Box>
-);
+/* ----------------------------------
+   HELPERS
+---------------------------------- */
+const getSkillLevel = (name) => {
+  if (ADVANCED.includes(name)) return "Advanced";
+  if (INTERMEDIATE.includes(name)) return "Intermediate";
+  return "Beginner";
+};
+
+const levelColor = {
+  Advanced: "success",
+  Intermediate: "warning",
+  Beginner: "default",
+};
+
+/* ----------------------------------
+   COMPONENTS
+---------------------------------- */
+const SkillItem = ({ name }) => {
+  const level = getSkillLevel(name);
+
+  return (
+    <Box
+      onClick={() => window.open(skillLinks[name], "_blank")}
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        p: 1.5,
+        borderRadius: 2,
+        border: "1px solid rgba(255,255,255,0.1)",
+        background: "rgba(255,255,255,0.03)",
+        cursor: "pointer",
+        transition: "0.25s",
+        "&:hover": {
+          transform: "scale(1.05)",
+          boxShadow: "0px 0px 12px rgba(0,200,255,0.4)",
+        },
+      }}
+    >
+      <Typography>{name}</Typography>
+
+      <Chip
+        label={level}
+        size="small"
+        color={levelColor[level]}
+        variant={level === "Beginner" ? "outlined" : "filled"}
+      />
+    </Box>
+  );
+};
 
 const GroupCard = ({ group }) => (
   <Paper
@@ -69,11 +147,11 @@ const GroupCard = ({ group }) => (
     sx={{
       p: 3,
       borderRadius: 3,
-      minWidth: 260,      
-      height: 420,        
-      overflowY: "auto",  
-      flexShrink: 0,      
-      mr: 3,              
+      minWidth: 280,
+      height: 420,
+      overflowY: "auto",
+      flexShrink: 0,
+      mr: 3,
     }}
   >
     <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
@@ -88,31 +166,35 @@ const GroupCard = ({ group }) => (
   </Paper>
 );
 
-// MAIN SECTION
-const Skills = () => (
-  <Box sx={{ py: 10 }}>
-    <Typography variant="h4" align="center" sx={{ mb: 6, fontWeight: 700 }}>
-      Technical Skills
-    </Typography>
+/* ----------------------------------
+   MAIN SECTION
+---------------------------------- */
+const Skills = () => {
+  return (
+    <Box sx={{ py: 10 }}>
+      <Typography variant="h4" align="center" sx={{ mb: 6, fontWeight: 700 }}>
+        Technical Skills
+      </Typography>
 
-    <Box
-      sx={{
-        display: "flex",
-        overflowX: "auto",
-        gap: 2,
-        px: 2,
-        pb: 1,
-        scrollSnapType: "x mandatory",
-        justifyContent:"center" 
-      }}
-    >
-      {skillGroups.map((group) => (
-        <Box key={group.title} sx={{ scrollSnapAlign: "start"}}>
-          <GroupCard group={group} />
-        </Box>
-      ))}
+      <Box
+        sx={{
+          display: "flex",
+          overflowX: "auto",
+          gap: 2,
+          px: 2,
+          pb: 1,
+          scrollSnapType: "x mandatory",
+          justifyContent: "center",
+        }}
+      >
+        {skillGroups.map((group) => (
+          <Box key={group.title} sx={{ scrollSnapAlign: "start" }}>
+            <GroupCard group={group} />
+          </Box>
+        ))}
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};
 
 export default Skills;

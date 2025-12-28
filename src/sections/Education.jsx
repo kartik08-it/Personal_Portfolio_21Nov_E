@@ -1,33 +1,46 @@
 import React from "react";
-import { Box, Grid, Paper, Typography, Link,Stack } from "@mui/material";
+import { Box, Grid, Paper, Typography, Stack } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
-import { Margin } from "@mui/icons-material";
 
-const education = {
-  degree: "Bachelor of Science in Computer Science",
-  college: "D.A.V PG College, Muzaffarnagar",
-  duration: "2016 - 2020",
-};
-
-const certifications = [
+const educationList = [
   {
-    title: "AWS Certified Solutions Architect",
-    org: "Amazon Web Services",
-    year: "Issued 2023",
-    link: "#",
+    degree: "Bachelor of Science in Computer Science",
+    institute: "D.A.V PG College, Muzaffarnagar",
+    duration: "2016 – 2020",
   },
   {
-    title: "MongoDB Certified Developer",
-    org: "MongoDB University",
-    year: "Issued 2022",
-    link: "#",
+    degree: "Senior Secondary (12th) – Science Stream",
+    institute: "LJP SVM Inter College",
+    duration: "2016 • 70%",
   },
   {
-    title: "Professional Scrum Master I",
-    org: "Scrum.org",
-    year: "Issued 2021",
-    link: "#",
+    degree: "Secondary School (10th)",
+    institute: "LJP SVM Inter College",
+    duration: "2014",
+  },
+];
+
+const learningAreas = [
+  {
+    title: "Backend & API Development",
+    desc: "RESTful APIs, SOAP services, middleware, queues, and performance optimization using Laravel.",
+  },
+  {
+    title: "Frontend Engineering",
+    desc: "Responsive UI development with React, TypeScript, and Material-UI.",
+  },
+  {
+    title: "Security & Authentication",
+    desc: "Role-Based Access Control (RBAC) and Two-Factor Authentication (2FA).",
+  },
+  {
+    title: "Agile & Team Collaboration",
+    desc: "Sprint-based development, peer reviews, and cross-functional collaboration.",
+  },
+  {
+    title: "Linux & Developer Tooling",
+    desc: "Ubuntu/Linux, Git, Postman, debugging, and deployment workflows.",
   },
 ];
 
@@ -47,9 +60,8 @@ const Card = ({ children }) => (
 const Education = () => {
   return (
     <Box sx={{ py: 10 }}>
-      {/* Heading */}
       <Typography variant="h4" align="center" sx={{ mb: 6, fontWeight: 700 }}>
-        Education & Certifications
+        Education & Learning
       </Typography>
 
       <Grid
@@ -61,67 +73,48 @@ const Education = () => {
         <Grid item xs={12} md={6}>
           <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap: 1.2 }}>
             <SchoolIcon sx={{ color: "primary.main" }} />
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            <Typography variant="h6" fontWeight={600}>
               Education
             </Typography>
           </Box>
 
-          <Card>
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-              {education.degree}
-            </Typography>
-            <Typography sx={{ color: "text.secondary", mt: 0.5 }}>
-              {education.college}
-            </Typography>
-
-            <Typography sx={{ mt: 2, color: "text.secondary", fontSize: 14 }}>
-              📅 {education.duration}
-            </Typography>
-
-            <Typography sx={{ mt: 1.5, color: "text.secondary", fontSize: 14 }}>
-              {education.details}
-            </Typography>
-          </Card>
+          <Stack spacing={3}>
+            {educationList.map((edu, i) => (
+              <Card key={i}>
+                <Typography variant="h6" fontWeight={600}>
+                  {edu.degree}
+                </Typography>
+                <Typography sx={{ color: "text.secondary", mt: 0.5 }}>
+                  {edu.institute}
+                </Typography>
+                <Typography
+                  sx={{ mt: 1.5, color: "text.secondary", fontSize: 14 }}
+                >
+                  📅 {edu.duration}
+                </Typography>
+              </Card>
+            ))}
+          </Stack>
         </Grid>
 
-        {/* RIGHT — CERTIFICATIONS */}
+        {/* RIGHT — LEARNING & FOCUS */}
         <Grid item xs={12} md={6}>
           <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap: 1.2 }}>
             <WorkspacePremiumIcon sx={{ color: "primary.main" }} />
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-              Certifications
+            <Typography variant="h6" fontWeight={600}>
+              Professional Learning
             </Typography>
           </Box>
 
           <Stack spacing={3}>
-            {certifications.map((c, i) => (
-              <Card key={i} sx={{ p: 3, borderRadius: 2 }}>
-                <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                  {c.title}
+            {learningAreas.map((item, i) => (
+              <Card key={i}>
+                <Typography variant="h6" fontWeight={600}>
+                  {item.title}
                 </Typography>
-
-                <Typography sx={{ color: "text.secondary", mt: 0.5 }}>
-                  {c.org}
+                <Typography sx={{ color: "text.secondary", mt: 1 }}>
+                  {item.desc}
                 </Typography>
-
-                <Typography
-                  sx={{ color: "text.secondary", mt: 1, fontSize: 14 }}
-                >
-                  📅 {c.year}
-                </Typography>
-
-                <Link
-                  href={c.link}
-                  target="_blank"
-                  sx={{
-                    mt: 1.5,
-                    display: "inline-block",
-                    fontWeight: 600,
-                    color: "primary.light",
-                  }}
-                >
-                  View Credential ↗
-                </Link>
               </Card>
             ))}
           </Stack>

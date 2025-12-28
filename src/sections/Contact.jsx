@@ -75,7 +75,7 @@ const Contact = () => {
               display: "flex",
               justifyContent: "center",
               gap: 3,
-              width: "100%",
+              width: "96%",
             }}
           >
             <Box sx={{ width: "40%" }}>
