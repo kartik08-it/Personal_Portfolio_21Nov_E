@@ -3,6 +3,7 @@ import { Box, Typography, IconButton, Divider, Stack } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const Footer = () => {
   return (
@@ -31,9 +32,7 @@ const Footer = () => {
           <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5 }}>
             Kartik Gaur
           </Typography>
-          <Typography color="text.secondary">
-            Full Stack Developer
-          </Typography>
+          <Typography color="text.secondary">Full Stack Developer</Typography>
         </Box>
 
         {/* Right Icons */}
@@ -44,7 +43,9 @@ const Footer = () => {
               border: "1px solid rgba(255,255,255,0.2)",
               borderRadius: 2,
             }}
-            onClick={() => window.open("https://github.com/kartik08-it", "_blank")}
+            onClick={() =>
+              window.open("https://github.com/kartik08-it", "_blank")
+            }
           >
             <GitHubIcon />
           </IconButton>
@@ -55,7 +56,9 @@ const Footer = () => {
               border: "1px solid rgba(255,255,255,0.2)",
               borderRadius: 2,
             }}
-            onClick={() => window.open("https://linkedin.com/in/kartikUpadhayay", "_blank")}
+            onClick={() =>
+              window.open("https://linkedin.com/in/kartikUpadhayay", "_blank")
+            }
           >
             <LinkedInIcon />
           </IconButton>
@@ -70,6 +73,16 @@ const Footer = () => {
           >
             <EmailIcon />
           </IconButton>
+          <IconButton
+            size="large"
+            sx={{
+              border: "1px solid rgba(255,255,255,0.2)",
+              borderRadius: 2,
+            }}
+            onClick={() => window.open("https://wa.me/917088586048", "_blank")}
+          >
+            <WhatsAppIcon />
+          </IconButton>
         </Stack>
       </Box>
 
@@ -82,8 +95,8 @@ const Footer = () => {
         color="text.secondary"
         sx={{ fontSize: "0.9rem" }}
       >
-        © {new Date().getFullYear()} Kartik Gaur. All rights reserved.  
-        Built with <strong>React & MUI</strong>.
+        © {new Date().getFullYear()} Kartik Gaur. All rights reserved. Built
+        with <strong>React & MUI</strong>.
       </Typography>
     </Box>
   );

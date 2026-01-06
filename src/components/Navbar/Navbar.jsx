@@ -50,17 +50,28 @@ const Navbar = ({ activeSection, scrollToSection }) => {
         }}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          
           {/* LEFT: Name */}
-          <Typography
-            variant="h6"
+          <Box
             sx={{
-              fontWeight: 700,
-              fontSize: { xs: "1.1rem", md: "1.3rem" },
+              display: "flex",
+              alignItems: "center",
+              gap: 1.5,
+              cursor: "pointer",
             }}
+            onClick={() => scrollToSection("about")}
           >
-            Kartik Gaur
-          </Typography>
+            {/* KU LOGO */}
+            <Box
+              component="img"
+              src="/KULogo.png"
+              alt="kartik Upadhayay"
+              sx={{
+                width: 70,
+                height: 70,
+                borderRadius: 1.5,
+              }}
+            />
+          </Box>
 
           {/* DESKTOP NAVIGATION */}
           <Box
