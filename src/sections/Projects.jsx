@@ -19,7 +19,7 @@ const personalProjects = [
     stack: ["React.js", "Material UI", "Vite"],
     isPersonal: true,
     demoLink: import.meta.env.VITE_PORTFOLIO_DEMO,
-    codeLink: import.meta.env.VITE_PORTFOLIO_DEMO,
+    codeLink: import.meta.env.VITE_PORTFOLIO_REPO,
   },
 
   {
@@ -27,7 +27,7 @@ const personalProjects = [
     desc: "A full-stack QA testing platform to create, execute, and track test cases and defects.",
     impact:
       "Streamlined QA workflows by centralizing test execution, defect logging, and status tracking.",
-    img: "/QATool.png",
+    img: "/Upcoming.png",
     features: [
       "Test Case Management",
       "Test Execution",
@@ -37,7 +37,7 @@ const personalProjects = [
     stack: ["Laravel", "MySQL", "Blade", "Bootstrap"],
     isPersonal: true,
     demoLink: "",
-    codeLink: "https://github.com/yourname/qa-testing-tool",
+    codeLink: import.meta.env.VITE_QA_TOOL_REPO,
   },
 
   {
@@ -45,7 +45,7 @@ const personalProjects = [
     desc: "A lightweight task management application for developers inspired by Jira and Trello.",
     impact:
       "Improved task visibility and tracking for small projects and personal productivity.",
-    img: "/TaskManager.png",
+    img: "/Upcoming.png",
     features: [
       "Project-based Tasks",
       "Task Status Tracking",
@@ -54,7 +54,7 @@ const personalProjects = [
     stack: ["React", "TypeScript", "Vite"],
     isPersonal: true,
     demoLink: "",
-    codeLink: "https://github.com/yourname/task-manager",
+    codeLink: import.meta.env.VITE_TASK_MANAGER_REPO,
   },
 
   {
@@ -62,12 +62,12 @@ const personalProjects = [
     desc: "A simple REST-based notes application for creating, organizing, and managing notes.",
     impact:
       "Helped practice clean API design and CRUD workflows with authentication.",
-    img: "/NotesApp.png",
+    img: "/Upcoming.png",
     features: ["Create & Edit Notes", "REST APIs", "Authentication"],
     stack: ["Laravel", "REST APIs", "MySQL"],
     isPersonal: true,
     demoLink: "",
-    codeLink: "https://github.com/yourname/notes-app",
+    codeLink: import.meta.env.VITE_NOTES_APP_REPO,
   },
 ];
 const ProjectCard = ({ p }) => (

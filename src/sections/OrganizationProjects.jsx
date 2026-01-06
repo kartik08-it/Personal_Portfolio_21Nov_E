@@ -3,7 +3,6 @@ import { Box, Grid, Paper, Typography, Chip, Button } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import CodeIcon from "@mui/icons-material/Code";
 import ProjectCaseStudyDialog from "../components/Dialog/ProjectCaseStudyDialog";
-
 const projects = [
   {
     title: "Admin 2.0 Interface",
@@ -404,19 +403,46 @@ const ProjectCard = ({ p, onViewDetails }) => (
 
 const OrganizationProjects = () => {
   const [selectedProject, setSelectedProject] = React.useState(null);
+
   return (
     <Box sx={{ py: 10 }}>
       <Typography variant="h4" align="center" sx={{ mb: 6, fontWeight: 700 }}>
         Professional Projects
       </Typography>
 
-      <Grid container spacing={4} justifyContent="center">
+      <Box
+        sx={{
+          display: "flex",
+          gap: 4,
+          overflowX: "auto",
+          px: 4,
+          scrollSnapType: "x mandatory",
+          WebkitOverflowScrolling: "touch",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "100%",
+          maxWidth: 1800,
+          height: '720px',
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+          scrollbarWidth: "none",
+        }}
+      >
         {projects.map((p) => (
-          <Grid item xs={12} md={3.5} key={p.title}>
+          <Box
+            key={p.title}
+            sx={{
+              flex: "0 0 auto",
+              scrollSnapAlign: "start",
+            }}
+          >
             <ProjectCard p={p} onViewDetails={setSelectedProject} />
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
+
+      {/* Case Study Dialog */}
       <ProjectCaseStudyDialog
         open={Boolean(selectedProject)}
         project={selectedProject}
@@ -425,5 +451,4 @@ const OrganizationProjects = () => {
     </Box>
   );
 };
-
 export default OrganizationProjects;
