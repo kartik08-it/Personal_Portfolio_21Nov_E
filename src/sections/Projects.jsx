@@ -3,79 +3,73 @@ import { Box, Grid, Paper, Typography, Chip, Button } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import CodeIcon from "@mui/icons-material/Code";
 
-const projects = [
+const personalProjects = [
   {
-    title: "Admin 2.0 Interface",
-    desc: "Redesigned a modular and scalable admin dashboard used internally for managing core application workflows.",
+    title: "Developer Portfolio",
+    desc: "A personal portfolio website to showcase professional and personal projects with case studies.",
     impact:
-      "Reduced data load time by 35% and simplified feature maintenance across teams.",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+      "Provides a clear overview of my experience, skills, and real-world project work.",
+    img: "/DeveloperPortfolio.png",
     features: [
-      "Advanced CRUD",
-      "Dynamic Forms",
-      "Role-Based Access",
-      "Reusable Components",
+      "Project Showcase",
+      "Case Study Modals",
+      "Responsive Design",
+      "Dark Mode UI",
     ],
-    stack: ["React.js", "Material UI", "TypeScript", "REST APIs"],
+    stack: ["React.js", "Material UI", "Vite"],
+    isPersonal: true,
+    demoLink: import.meta.env.VITE_PORTFOLIO_DEMO,
+    codeLink: import.meta.env.VITE_PORTFOLIO_DEMO,
   },
+
   {
-    title: "Proctor Panel",
-    desc: "Built a real-time proctoring panel for live candidate monitoring during online assessments.",
+    title: "QA Testing Tool",
+    desc: "A full-stack QA testing platform to create, execute, and track test cases and defects.",
     impact:
-      "Improved event response latency by 50%, enabling faster and more reliable session tracking.",
-    img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=500&fit=crop",
+      "Streamlined QA workflows by centralizing test execution, defect logging, and status tracking.",
+    img: "/QATool.png",
     features: [
-      "Live Monitoring",
-      "WebSocket Events",
-      "Session Tracking",
-      "Real-time Alerts",
+      "Test Case Management",
+      "Test Execution",
+      "Defect Tracking",
+      "Status Reporting",
     ],
-    stack: ["React.js", "TypeScript", "WebSockets", "Material UI"],
+    stack: ["Laravel", "MySQL", "Blade", "Bootstrap"],
+    isPersonal: true,
+    demoLink: "",
+    codeLink: "https://github.com/yourname/qa-testing-tool",
   },
+
   {
-    title: "API Migration (SOAP to REST)",
-    desc: "Led migration of legacy SOAP-based services to modern RESTful APIs with improved scalability and maintainability.",
+    title: "Task Manager Tool",
+    desc: "A lightweight task management application for developers inspired by Jira and Trello.",
     impact:
-      "Increased request throughput and reduced server load across critical services.",
-    img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=500&fit=crop",
+      "Improved task visibility and tracking for small projects and personal productivity.",
+    img: "/TaskManager.png",
     features: [
-      "REST Architecture",
-      "Async Queues",
-      "Middleware",
-      "API Optimization",
+      "Project-based Tasks",
+      "Task Status Tracking",
+      "Developer-Friendly UI",
     ],
-    stack: ["Laravel", "PHP", "REST APIs", "MySQL"],
+    stack: ["React", "TypeScript", "Vite"],
+    isPersonal: true,
+    demoLink: "",
+    codeLink: "https://github.com/yourname/task-manager",
   },
+
   {
-    title: "SuperAdmin Panel",
-    desc: "Developed a secure full-stack SuperAdmin system for managing users, roles, and system configurations.",
+    title: "Notes App",
+    desc: "A simple REST-based notes application for creating, organizing, and managing notes.",
     impact:
-      "Improved data transparency and integrity with granular permissions and audit visibility.",
-    img: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=800&h=500&fit=crop",
-    features: [
-      "Role Management",
-      "2FA Authentication",
-      "Audit Logs",
-      "System Alerts",
-    ],
-    stack: ["Laravel", "React.js", "Google Authenticator", "RBAC"],
-  },
-  {
-    title: "Email Template System",
-    desc: "Created dynamic and brand-aligned email templates for transactional and notification workflows.",
-    impact:
-      "Improved click-through rates by 20% with consistent and responsive email layouts.",
-    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=500&fit=crop",
-    features: [
-      "Reusable Templates",
-      "Blade Components",
-      "Dynamic Content",
-      "Brand Consistency",
-    ],
-    stack: ["Laravel Blade", "HTML", "CSS", "Email Systems"],
+      "Helped practice clean API design and CRUD workflows with authentication.",
+    img: "/NotesApp.png",
+    features: ["Create & Edit Notes", "REST APIs", "Authentication"],
+    stack: ["Laravel", "REST APIs", "MySQL"],
+    isPersonal: true,
+    demoLink: "",
+    codeLink: "https://github.com/yourname/notes-app",
   },
 ];
-
 const ProjectCard = ({ p }) => (
   <Paper
     sx={{
@@ -83,9 +77,10 @@ const ProjectCard = ({ p }) => (
       borderRadius: 3,
       overflow: "hidden",
       mx: "auto",
-      minHeight:700
+      minHeight: 700,
     }}
   >
+    {/* Image */}
     <Box
       sx={{
         height: 220,
@@ -93,45 +88,41 @@ const ProjectCard = ({ p }) => (
         backgroundSize: "cover",
         backgroundPosition: "center",
         position: "relative",
+
+        "&:hover .action-buttons": {
+          opacity: 1,
+          transform: "translate(-50%, -50%)",
+        },
       }}
     >
+      {/* Action Buttons */}
       <Box
+        className="action-buttons"
         sx={{
-          height: 220,
-          backgroundImage: `url(${p.img})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-
-          "&:hover .action-buttons": {
-            opacity: 1,
-            transform: "translateY(0px)",
-          },
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -60%)",
+          display: "flex",
+          gap: 1.5,
+          opacity: 0,
+          transition: "all 0.3s ease",
         }}
       >
-        <Box
-          className="action-buttons"
-          sx={{
-            position: "absolute",
-            top: 100,
-            right: 50,
-            display: "flex",
-            gap: 1.5,
-
-            opacity: 0,
-            transform: "translateY(-8px)",
-            transition: "all 0.3s ease",
-          }}
-        >
+        {p.demoLink && (
           <Button
             variant="contained"
             size="small"
             endIcon={<ArrowOutwardIcon />}
-            sx={{ borderRadius: 2, textTransform: "none", fontWeight: 600 }}
+            sx={{ borderRadius: 2, textTransform: "none" }}
+            onClick={() => window.open(p.demoLink, "_blank")}
           >
             View Demo
           </Button>
+        )}
 
+        {/* View Code */}
+        {p.codeLink && (
           <Button
             variant="outlined"
             size="small"
@@ -143,13 +134,15 @@ const ProjectCard = ({ p }) => (
               color: "white",
               borderColor: "white",
             }}
+            onClick={() => window.open(p.codeLink, "_blank")}
           >
             View Code
           </Button>
-        </Box>
+        )}
       </Box>
     </Box>
 
+    {/* Content */}
     <Box sx={{ p: 3 }}>
       <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
         {p.title}
@@ -161,12 +154,7 @@ const ProjectCard = ({ p }) => (
 
       <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", mb: 2 }}>
         {p.features.map((t) => (
-          <Chip
-            key={t}
-            label={t}
-            size="small"
-            sx={{ background: "rgba(255,255,255,0.06)" }}
-          />
+          <Chip key={t} label={t} size="small" />
         ))}
       </Box>
 
@@ -179,14 +167,7 @@ const ProjectCard = ({ p }) => (
           mb: 2,
         }}
       >
-        <Typography
-          variant="body2"
-          sx={{
-            color: "text.primary",
-            fontWeight: 500,
-            lineHeight: 1.5,
-          }}
-        >
+        <Typography variant="body2" sx={{ fontWeight: 500 }}>
           {p.impact}
         </Typography>
       </Box>
@@ -203,11 +184,11 @@ const ProjectCard = ({ p }) => (
 const Projects = () => (
   <Box sx={{ py: 10 }}>
     <Typography variant="h4" align="center" sx={{ mb: 6, fontWeight: 700 }}>
-      Featured Projects
+      Personal Projects
     </Typography>
 
     <Grid container spacing={4} justifyContent="center">
-      {projects.map((p) => (
+      {personalProjects.map((p) => (
         <Grid item xs={12} md={3.5} key={p.title}>
           <ProjectCard p={p} />
         </Grid>

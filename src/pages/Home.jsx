@@ -23,6 +23,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import CodeIcon from "@mui/icons-material/Code";
+import OrganizationProjects from "../sections/OrganizationProjects";
 
 /* ----------------------------------
    CONSTANTS
@@ -36,6 +37,7 @@ const Home = ({ setActiveSection }) => {
   const aboutRef = useRef(null);
   const experienceRef = useRef(null);
   const skillsRef = useRef(null);
+  const organizationprojectsRef = useRef(null);
   const projectsRef = useRef(null);
   const educationRef = useRef(null);
   const contactRef = useRef(null);
@@ -44,6 +46,7 @@ const Home = ({ setActiveSection }) => {
     { id: "about", ref: aboutRef },
     { id: "experience", ref: experienceRef },
     { id: "skills", ref: skillsRef },
+    { id: "organizationprojects", ref: organizationprojectsRef },
     { id: "projects", ref: projectsRef },
     { id: "education", ref: educationRef },
     { id: "contact", ref: contactRef },
@@ -217,6 +220,9 @@ const Home = ({ setActiveSection }) => {
       </div>
       <div ref={skillsRef} id="skills">
         <Skills />
+      </div>
+      <div ref={organizationprojectsRef} id="organizationprojects">
+        <OrganizationProjects />
       </div>
       <div ref={projectsRef} id="projects">
         <Projects />

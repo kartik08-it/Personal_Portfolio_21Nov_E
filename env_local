@@ -1,0 +1,12 @@
+# Portfolio
+VITE_PORTFOLIO_DEMO=https://your-portfolio.vercel.app
+VITE_PORTFOLIO_REPO=https://github.com/yourname/portfolio
+
+# QA Tool
+VITE_QA_TOOL_REPO=https://github.com/yourname/qa-testing-tool
+
+# Task Manager
+VITE_TASK_MANAGER_REPO=https://github.com/yourname/task-manager
+
+# Notes App
+VITE_NOTES_APP_REPO=https://github.com/yourname/notes-app
