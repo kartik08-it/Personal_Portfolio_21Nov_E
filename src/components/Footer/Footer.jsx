@@ -30,7 +30,7 @@ const Footer = () => {
         {/* Left */}
         <Box>
           <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5 }}>
-            Kartik Gaur
+            Kartik Upadhayay
           </Typography>
           <Typography color="text.secondary">Full Stack Developer</Typography>
         </Box>
