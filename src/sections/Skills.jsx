@@ -179,12 +179,21 @@ const Skills = () => {
       <Box
         sx={{
           display: "flex",
+          gap: 4,
           overflowX: "auto",
-          gap: 2,
-          px: 2,
-          pb: 1,
+          px: 4,
           scrollSnapType: "x mandatory",
-          justifyContent: "center",
+          WebkitOverflowScrolling: "touch",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "100%",
+          maxWidth: 1800,
+          height: "720px",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+          scrollbarWidth: "none",
+          Height: 430,
         }}
       >
         {skillGroups.map((group) => (

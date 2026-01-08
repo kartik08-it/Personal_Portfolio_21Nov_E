@@ -128,6 +128,7 @@ const Experience = () => {
         sx={{
           py: 2,
           pl: { xs: 0, md: 4 }, // push timeline slightly left
+              ml: { xs: 0, md: -22 }, // ⬅️ push timeline left
         }}
       >
         {experiences.map((exp, idx) => (

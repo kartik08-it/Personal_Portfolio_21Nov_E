@@ -69,6 +69,18 @@ const personalProjects = [
     demoLink: "",
     codeLink: import.meta.env.VITE_NOTES_APP_REPO,
   },
+  {
+    title: "Parallax Website",
+    desc: "An interactive parallax-based roadmap website showcasing the Full-Stack Developer learning journey with smooth scrolling animations and modern UI design.",
+    impact:
+      "Strengthened understanding of CSS parallax effects, layout structuring, and scroll-based animations while building a visually engaging, content-driven web experience.",
+    img: "/ParallaxWebsite.png",
+    features: ["Parallax Scrolling", "Animated Sections", "Responsive Layout"],
+    stack: ["HTML", "CSS", "JAVASCRIPT"],
+    isPersonal: true,
+    demoLink: import.meta.env.VITE_PARALLAX_ROADMAP_DEMO,
+    codeLink: import.meta.env.VITE_PARALLAX_ROADMAP_REPO,
+  },
 ];
 const ProjectCard = ({ p }) => (
   <Paper
@@ -183,17 +195,41 @@ const ProjectCard = ({ p }) => (
 
 const Projects = () => (
   <Box sx={{ py: 10 }}>
-    <Typography variant="h4" align="center" sx={{ mb: 6, fontWeight: 700 }}>
+    <Typography variant="h4" align="center" sx={{ mb: 4, fontWeight: 700 }}>
       Personal Projects
     </Typography>
 
-    <Grid container spacing={4} justifyContent="center">
+    <Box
+      sx={{
+        display: "flex",
+        gap: 4,
+        overflowX: "auto",
+        px: 4,
+        scrollSnapType: "x mandatory",
+        WebkitOverflowScrolling: "touch",
+        marginLeft: "auto",
+        marginRight: "auto",
+        width: "100%",
+        maxWidth: 1800,
+        height: "720px",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+        scrollbarWidth: "none",
+      }}
+    >
       {personalProjects.map((p) => (
-        <Grid item xs={12} md={3.5} key={p.title}>
+        <Box
+          key={p.title}
+          sx={{
+            minWidth: 330,
+            scrollSnapAlign: "center",
+          }}
+        >
           <ProjectCard p={p} />
-        </Grid>
+        </Box>
       ))}
-    </Grid>
+    </Box>
   </Box>
 );
 

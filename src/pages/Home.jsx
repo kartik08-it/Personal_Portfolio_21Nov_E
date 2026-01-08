@@ -165,7 +165,7 @@ const Home = ({ setActiveSection }) => {
                 size="large"
                 startIcon={<MailOutlineIcon />}
                 component="a"
-                href={RESUME_URL}
+                href="/SDE_Kartik_Upadhayay_CV.pdf"
                 download
               >
                 Download Resume
