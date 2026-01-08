@@ -188,12 +188,11 @@ const Skills = () => {
           marginRight: "auto",
           width: "100%",
           maxWidth: 1800,
-          height: "720px",
+          height: "430px",
           "&::-webkit-scrollbar": {
             display: "none",
           },
           scrollbarWidth: "none",
-          Height: 430,
         }}
       >
         {skillGroups.map((group) => (
