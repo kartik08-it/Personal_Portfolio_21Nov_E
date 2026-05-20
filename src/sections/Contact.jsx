@@ -17,7 +17,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const recipient = "your.email@example.com";
+    const recipient = "kartiku03@gmail.com";
     const subject = `Portfolio contact from ${name || "a visitor"}`;
     const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
     const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
