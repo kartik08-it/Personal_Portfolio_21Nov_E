@@ -119,12 +119,9 @@ const Home = ({ setActiveSection }) => {
             </Typography>
 
             <Typography sx={{ mt: 3, opacity: 0.8, maxWidth: "550px" }}>
-              Results-oriented Full Stack Developer with 2+ years of experience
-              building scalable web applications using Laravel, React, and
-              TypeScript. Skilled in modern API development, database
-              optimization, and modular front-end architectures. Proven ability
-              to migrate legacy systems, improve performance, and deliver
-              business-driven results.
+              I’m a Full Stack Developer with 2.8 years of hands-on experience building scalable and reliable web applications using Laravel, React, and TypeScript.
+              My core strength lies in backend development—designing clean REST APIs, optimizing databases, and improving system performance. I’ve worked on modernizing legacy systems, including migrating SOAP-based services to RESTful architectures, and implementing security features like role-based access control and two-factor authentication (2FA).
+              On the frontend, I build modular, responsive user interfaces with React and Material UI, focusing on clarity, usability, and maintainability. My experience includes developing admin dashboards, real-time features, and internal tools that streamline everyday business operations.
             </Typography>
 
             {/* CONTACT INFO */}

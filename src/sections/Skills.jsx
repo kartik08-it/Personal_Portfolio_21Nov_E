@@ -53,6 +53,9 @@ const INTERMEDIATE = [
   "Postman",
   "Ubuntu/Linux",
   "Agile/Scrum",
+  "Java",
+  "Spring Boot",
+  "CodeIgniter",
 ];
 
 /* ----------------------------------
@@ -61,7 +64,7 @@ const INTERMEDIATE = [
 const skillGroups = [
   {
     title: "Backend Development",
-    items: ["PHP", "Laravel", "Python", "Flask", "RESTful APIs", "SOAP"],
+    items: ["PHP", "Laravel","CodeIgniter","Java","Spring Boot", "Python", "Flask", "RESTful APIs", "SOAP"],
   },
   {
     title: "Frontend Development",
@@ -81,12 +84,12 @@ const skillGroups = [
   },
   {
     title: "Tools & Platforms",
-    items: ["Git", "GitHub", "Postman", "Ubuntu/Linux", "Agile/Scrum"],
+    items: ["Git", "GitHub", "Postman", "Ubuntu/Linux", "Agile/Scrum", "SVN Version Control"],
   },
-  {
-    title: "Cloud Services",
-    items: ["AWS"],
-  },
+  // {
+  //   title: "Cloud Services",
+  //   items: ["AWS"],
+  // },
 ];
 
 /* ----------------------------------
@@ -109,10 +112,11 @@ const levelColor = {
 ---------------------------------- */
 const SkillItem = ({ name }) => {
   const level = getSkillLevel(name);
+  const link = skillLinks[name];
 
   return (
     <Box
-      onClick={() => window.open(skillLinks[name], "_blank")}
+      onClick={() => link && window.open(link, "_blank")}
       sx={{
         display: "flex",
         justifyContent: "space-between",
@@ -121,11 +125,11 @@ const SkillItem = ({ name }) => {
         borderRadius: 2,
         border: "1px solid rgba(255,255,255,0.1)",
         background: "rgba(255,255,255,0.03)",
-        cursor: "pointer",
+        cursor: link ? "pointer" : "default",
         transition: "0.25s",
         "&:hover": {
-          transform: "scale(1.05)",
-          boxShadow: "0px 0px 12px rgba(0,200,255,0.4)",
+          transform: link ? "translateY(-2px)" : "none",
+          boxShadow: link ? "0px 0px 12px rgba(0,200,255,0.4)" : "none",
         },
       }}
     >
@@ -147,18 +151,34 @@ const GroupCard = ({ group }) => (
     sx={{
       p: 3,
       borderRadius: 3,
-      minWidth: 280,
-      height: 420,
-      overflowY: "auto",
-      flexShrink: 0,
-      mr: 3,
+      minHeight: 420,
+      maxHeight: 420,
+      display: "flex",
+      flexDirection: "column",
+      overflow: "hidden",
     }}
   >
-    <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
-      {group.title}
-    </Typography>
+    <Box
+      sx={{
+        mb: 2,
+        maxHeight: 64,
+        overflowY: "auto",
+        pr: 1,
+      }}
+    >
+      <Typography variant="h6" sx={{ fontWeight: 700 }}>
+        {group.title}
+      </Typography>
+    </Box>
 
-    <Stack spacing={1}>
+    <Stack
+      spacing={1}
+      sx={{
+        flex: 1,
+        overflowY: "auto",
+        pr: 1,
+      }}
+    >
       {group.items.map((item) => (
         <SkillItem key={item} name={item} />
       ))}
@@ -170,6 +190,10 @@ const GroupCard = ({ group }) => (
    MAIN SECTION
 ---------------------------------- */
 const Skills = () => {
+  const visibleSkillGroups = skillGroups.filter(
+    (group) => group.items && group.items.length > 0
+  );
+
   return (
     <Box sx={{ py: 10 }}>
       <Typography variant="h4" align="center" sx={{ mb: 6, fontWeight: 700 }}>
@@ -178,25 +202,21 @@ const Skills = () => {
 
       <Box
         sx={{
-          display: "flex",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: 4,
-          overflowX: "auto",
-          px: 4,
-          scrollSnapType: "x mandatory",
-          WebkitOverflowScrolling: "touch",
+          px: { xs: 2, md: 4 },
           marginLeft: "auto",
           marginRight: "auto",
           width: "100%",
           maxWidth: 1800,
-          height: "430px",
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
-          scrollbarWidth: "none",
+          maxHeight: 900,
+          overflowY: "auto",
+          alignItems: "stretch",
         }}
       >
-        {skillGroups.map((group) => (
-          <Box key={group.title} sx={{ scrollSnapAlign: "start" }}>
+        {visibleSkillGroups.map((group) => (
+          <Box key={group.title} sx={{ minWidth: 0 }}>
             <GroupCard group={group} />
           </Box>
         ))}

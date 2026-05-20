@@ -21,7 +21,6 @@ const personalProjects = [
     demoLink: import.meta.env.VITE_PORTFOLIO_DEMO,
     codeLink: import.meta.env.VITE_PORTFOLIO_REPO,
   },
-
   {
     title: "QA Testing Tool",
     desc: "A full-stack QA testing platform to create, execute, and track test cases and defects.",
@@ -80,6 +79,25 @@ const personalProjects = [
     isPersonal: true,
     demoLink: import.meta.env.VITE_PARALLAX_ROADMAP_DEMO,
     codeLink: import.meta.env.VITE_PARALLAX_ROADMAP_REPO,
+  },
+
+  {
+    title: "HRMS All-in-One Panel",
+    desc: "HRMS platform with employee, admin, and HR modules using Java, Spring Boot, React, and MySQL.",
+    impact:
+      "Delivered a complete role-based HR management solution that supports employee self-service, HR workflows, and admin governance.",
+    img: "/Upcoming.png",
+    features: [
+      "Employee Self-Service",
+      "Admin Control Panel",
+      "HR Workflow Management",
+      "Role-Based Access",
+      "REST API Modules",
+    ],
+    stack: ["Java", "Spring Boot", "React.js", "MySQL"],
+    isPersonal: true,
+    demoLink: "",
+    codeLink: "",
   },
 ];
 const ProjectCard = ({ p }) => (

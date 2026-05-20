@@ -10,9 +10,19 @@ import {
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 
 const Contact = () => {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [message, setMessage] = React.useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Message sent (demo)");
+
+    const recipient = "your.email@example.com";
+    const subject = `Portfolio contact from ${name || "a visitor"}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -54,11 +64,19 @@ const Contact = () => {
         <Typography
           align="center"
           color="text.secondary"
-          sx={{ mb: 4 }}
+          sx={{ mb: 2 }}
         >
           I'm always open to discussing new projects, creative ideas,
           or opportunities to be part of your vision.
         </Typography>
+
+        {/* <Typography
+          align="center"
+          color="text.secondary"
+          sx={{ mb: 4, fontStyle: "italic" }}
+        >
+          This form opens your email client directly, so no backend or SMTP service is required.
+        </Typography> */}
 
         <Box
           component="form"
@@ -70,7 +88,7 @@ const Contact = () => {
             gap: 3,
           }}
         >
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
               justifyContent: "center",
@@ -84,6 +102,8 @@ const Contact = () => {
                 fullWidth
                 placeholder="Your name"
                 variant="outlined"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </Box>
 
@@ -91,8 +111,10 @@ const Contact = () => {
               <Typography sx={{ mb: 1, fontWeight: 600 }}>Email</Typography>
               <TextField
                 fullWidth
-                placeholder="your.email@example.com"
+                placeholder="kartiku03@gmail.com"
                 variant="outlined"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Box>
           </Box>
@@ -105,8 +127,10 @@ const Contact = () => {
               multiline
               rows={6}
               variant="outlined"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
-          </Box>
+          </Box> */}
 
           <Button
             type="submit"

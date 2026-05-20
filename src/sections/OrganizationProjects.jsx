@@ -270,6 +270,106 @@ const projects = [
       ],
     },
   },
+
+  {
+    title: "DC Ashram Portal",
+    desc: "Developed a comprehensive web portal with modular backend and frontend architecture.",
+    impact:
+      "Streamlined operations and improved system responsiveness through modular design and responsive UI.",
+    img:"/DCashram.png",
+    features: [
+      "Modular Backend Architecture",
+      "Dynamic Frontend Modules",
+      "Responsive Design",
+      "AJAX Integration",
+    ],
+    stack: ["CodeIgniter", "AJAX", "MySQL", "HTML/CSS"],
+    isConfidential: true,
+
+    caseStudy: {
+      overview:
+        "A modular web portal built with CodeIgniter backend and frontend modules to support DC Ashram operations.",
+
+      responsibilities: [
+        "Designed and created modular backend structure using CodeIgniter",
+        "Developed dynamic frontend modules with reusable components",
+        "Fixed responsive UI issues to support multiple device sizes",
+        "Integrated AJAX for seamless real-time interactions",
+      ],
+
+      architecture: [
+        "CodeIgniter MVC framework for backend",
+        "Module-based architecture for scalability",
+        "AJAX-driven frontend for dynamic content",
+        "MySQL database for data persistence",
+      ],
+
+      techStack: ["CodeIgniter", "PHP", "AJAX", "MySQL", "HTML/CSS"],
+
+      impactMetrics: [
+        "Improved system responsiveness with modular design",
+        "Enhanced user experience with responsive layout",
+        "Streamlined operations through efficient module organization",
+      ],
+    },
+  },
+
+  {
+    title: "CRM Panels for Market Research",
+    desc: "Built a comprehensive CRM system integrating third-party buyer and supplier APIs with advanced filtering and search capabilities.",
+    impact:
+      "Enabled efficient market research operations through integrated data aggregation, advanced search, and automated workflows.",
+    img: "/crm_dashboard.png",
+    features: [
+      "Multi-API Integration",
+      "Advanced Search & Filters",
+      "Rate Limiting",
+      "Email Notifications",
+      "Dynamic Schema Design",
+    ],
+    stack: ["CodeIgniter", "Third-party APIs", "MySQL", "SMTP", "PHP"],
+    isConfidential: true,
+
+    caseStudy: {
+      overview:
+        "A robust CRM panel for market research integrating buyer and supplier data from multiple third-party APIs with advanced functionality.",
+
+      responsibilities: [
+        "Integrated third-party APIs for buyers and suppliers data aggregation",
+        "Designed dynamic database schema to support evolving feature requirements",
+        "Implemented advanced search and filtering functionality",
+        "Fixed UI/UX issues for improved user experience",
+        "Implemented rate limiting to protect API endpoints and backend services",
+        "Configured email services with SMTP for automated notifications",
+      ],
+
+      architecture: [
+        "CodeIgniter backend with API integration layer",
+        "Third-party API connectors for data synchronization",
+        "Advanced query filtering and search optimization",
+        "Rate limiting middleware for API protection",
+        "SMTP-based email notification system",
+        "MySQL schema design for feature extensibility",
+      ],
+
+      techStack: [
+        "CodeIgniter",
+        "PHP",
+        "MySQL",
+        "Third-party APIs",
+        "SMTP",
+        "Email Services",
+      ],
+
+      impactMetrics: [
+        "Centralized market research data from multiple sources",
+        "Improved data discovery with advanced search and filters",
+        "Protected backend infrastructure with rate limiting",
+        "Automated communication through email services",
+        "Scalable schema supporting future feature needs",
+      ],
+    },
+  },
 ];
 
 const ProjectCard = ({ p, onViewDetails }) => (
