@@ -53,6 +53,9 @@ const INTERMEDIATE = [
   "Postman",
   "Ubuntu/Linux",
   "Agile/Scrum",
+  "Java",
+  "Spring Boot",
+  "CodeIgniter",
 ];
 
 /* ----------------------------------
@@ -61,7 +64,7 @@ const INTERMEDIATE = [
 const skillGroups = [
   {
     title: "Backend Development",
-    items: ["PHP", "Laravel", "Python", "Flask", "RESTful APIs", "SOAP"],
+    items: ["PHP", "Laravel","CodeIgniter","Java","Spring Boot", "Python", "Flask", "RESTful APIs", "SOAP"],
   },
   {
     title: "Frontend Development",

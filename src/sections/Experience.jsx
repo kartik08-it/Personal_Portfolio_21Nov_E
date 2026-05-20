@@ -188,12 +188,14 @@ const Experience = () => {
                   boxShadow: "0 0 10px rgba(0,160,200,0.12)",
                 }}
               />
-              <TimelineConnector
-                sx={{
-                  flexGrow: 1,
-                  minHeight: 24,
-                }}
-              />
+              {idx !== experiences.length - 1 && (
+                <TimelineConnector
+                  sx={{
+                    flexGrow: 1,
+                    minHeight: 24,
+                  }}
+                />
+              )}
             </TimelineSeparator>
             <TimelineContent
               sx={{
