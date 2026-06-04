@@ -29,7 +29,7 @@ import OrganizationProjects from "../sections/OrganizationProjects";
    CONSTANTS
 ---------------------------------- */
 const GITHUB_URL = "https://github.com/kartik08-it";
-const LINKEDIN_URL = "https://www.linkedin.com/in/kartikUpadhayay";
+const LINKEDIN_URL = "https://www.linkedin.com/in/kartik-upadhayay-77b722148/";
 const EMAIL = "kartiku03@gmail.com";
 const RESUME_URL = "/kartikUpadhayay.pdf";
 
