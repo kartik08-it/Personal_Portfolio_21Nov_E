@@ -57,7 +57,7 @@ const Footer = () => {
               borderRadius: 2,
             }}
             onClick={() =>
-              window.open("https://linkedin.com/in/kartikUpadhayay", "_blank")
+              window.open("https://www.linkedin.com/in/kartik-upadhayay-77b722148/", "_blank")
             }
           >
             <LinkedInIcon />
