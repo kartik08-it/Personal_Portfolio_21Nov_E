@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Paper, Typography, Chip, Button } from "@mui/material";
+import { Box, Paper, Typography, Chip, Button, Stack } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import CodeIcon from "@mui/icons-material/Code";
 
@@ -103,150 +103,78 @@ const personalProjects = [
 const ProjectCard = ({ p }) => (
   <Paper
     sx={{
-      width: 330,
-      borderRadius: 3,
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
       overflow: "hidden",
-      mx: "auto",
-      minHeight: 700,
+      borderRadius: 4,
+      transition: "transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease",
+      "&:hover": { transform: "translateY(-6px)", boxShadow: "0 22px 48px rgba(24,37,33,0.12)", borderColor: "primary.main" },
     }}
   >
-    {/* Image */}
     <Box
-      sx={{
-        height: 220,
-        backgroundImage: `url(${p.img})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        position: "relative",
-
-        "&:hover .action-buttons": {
-          opacity: 1,
-          transform: "translate(-50%, -50%)",
-        },
-      }}
-    >
-      {/* Action Buttons */}
-      <Box
-        className="action-buttons"
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -60%)",
-          display: "flex",
-          gap: 1.5,
-          opacity: 0,
-          transition: "all 0.3s ease",
-        }}
-      >
-        {p.demoLink && (
-          <Button
-            variant="contained"
-            size="small"
-            endIcon={<ArrowOutwardIcon />}
-            sx={{ borderRadius: 2, textTransform: "none" }}
-            onClick={() => window.open(p.demoLink, "_blank")}
-          >
-            View Demo
-          </Button>
-        )}
-
-        {/* View Code */}
-        {p.codeLink && (
-          <Button
-            variant="outlined"
-            size="small"
-            endIcon={<CodeIcon />}
-            sx={{
-              borderRadius: 2,
-              textTransform: "none",
-              fontWeight: 600,
-              color: "white",
-              borderColor: "white",
-            }}
-            onClick={() => window.open(p.codeLink, "_blank")}
-          >
-            View Code
-          </Button>
-        )}
-      </Box>
-    </Box>
-
-    {/* Content */}
-    <Box sx={{ p: 3 }}>
-      <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
-        {p.title}
-      </Typography>
-
-      <Typography sx={{ color: "text.secondary", mb: 2, lineHeight: 1.6 }}>
-        {p.desc}
-      </Typography>
-
-      <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", mb: 2 }}>
-        {p.features.map((t) => (
-          <Chip key={t} label={t} size="small" />
+      component="img"
+      src={p.img}
+      alt={`${p.title} preview`}
+      loading="lazy"
+      sx={{ width: "100%", height: { xs: 205, md: 220 }, objectFit: "cover", bgcolor: "action.hover", transition: "transform 350ms ease", "&:hover": { transform: "scale(1.025)" } }}
+    />
+    <Box sx={{ p: { xs: 2.5, md: 3 }, display: "flex", flexDirection: "column", flex: 1 }}>
+      <Typography variant="h6" sx={{ fontWeight: 720, mb: 1 }}>{p.title}</Typography>
+      <Typography color="text.secondary" sx={{ mb: 2, lineHeight: 1.7 }}>{p.desc}</Typography>
+      <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap" sx={{ mb: 2 }}>
+        {p.features.slice(0, 3).map((feature) => (
+          <Chip key={feature} label={feature} size="small" variant="outlined" />
         ))}
-      </Box>
-
+      </Stack>
       <Box
         sx={{
-          p: 2,
-          borderRadius: 2,
-          background: "rgba(0, 200, 255, 0.08)",
-          border: "1px solid rgba(0,200,255,0.25)",
+          p: 1.75,
           mb: 2,
+          borderRadius: 2.5,
+          bgcolor: "primary.light",
+          color: "text.primary",
         }}
       >
-        <Typography variant="body2" sx={{ fontWeight: 500 }}>
-          {p.impact}
+        <Typography variant="caption" sx={{ display: "block", color: "primary.main", fontWeight: 750, mb: 0.5 }}>
+          OUTCOME
         </Typography>
+        <Typography variant="body2" sx={{ lineHeight: 1.65 }}>{p.impact}</Typography>
       </Box>
-
-      <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
-        {p.stack.map((t) => (
-          <Chip key={t} label={t} size="small" />
+      <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap" sx={{ mt: "auto", mb: 2 }}>
+        {p.stack.map((technology) => (
+          <Chip key={technology} label={technology} size="small" sx={{ bgcolor: "action.hover" }} />
         ))}
-      </Box>
+      </Stack>
+      <Stack direction="row" spacing={1}>
+        {p.demoLink && (
+          <Button component="a" href={p.demoLink} target="_blank" rel="noreferrer" size="small" endIcon={<ArrowOutwardIcon />}>
+            Live demo
+          </Button>
+        )}
+        {p.codeLink && (
+          <Button component="a" href={p.codeLink} target="_blank" rel="noreferrer" size="small" variant="outlined" endIcon={<CodeIcon />}>
+            Source code
+          </Button>
+        )}
+      </Stack>
     </Box>
   </Paper>
 );
 
 const Projects = () => (
-  <Box sx={{ py: 10 }}>
-    <Typography variant="h4" align="center" sx={{ mb: 4, fontWeight: 700 }}>
-      Personal Projects
-    </Typography>
-
-    <Box
-      sx={{
-        display: "flex",
-        gap: 4,
-        overflowX: "auto",
-        px: 4,
-        scrollSnapType: "x mandatory",
-        WebkitOverflowScrolling: "touch",
-        marginLeft: "auto",
-        marginRight: "auto",
-        width: "100%",
-        maxWidth: 1800,
-        height: "720px",
-        "&::-webkit-scrollbar": {
-          display: "none",
-        },
-        scrollbarWidth: "none",
-      }}
-    >
-      {personalProjects.map((p) => (
-        <Box
-          key={p.title}
-          sx={{
-            minWidth: 330,
-            scrollSnapAlign: "center",
-          }}
-        >
-          <ProjectCard p={p} />
-        </Box>
-      ))}
+  <Box component="section" sx={{ py: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 4, lg: 6 } }}>
+    <Box sx={{ width: "100%", mx: "auto" }}>
+      <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 750, letterSpacing: "0.12em" }}>
+        SELECTED BUILDS
+      </Typography>
+      <Typography variant="h3" sx={{ mt: 0.5, mb: 1.5 }}>Personal projects</Typography>
+      <Typography color="text.secondary" sx={{ maxWidth: 650, mb: 4.5, lineHeight: 1.75 }}>
+        A selection of tools and experiments I’ve built to solve practical problems and keep learning by doing.
+      </Typography>
+      <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "repeat(2, minmax(0, 1fr))", lg: "repeat(3, minmax(0, 1fr))" }, gap: 2.5, alignItems: "stretch" }}>
+        {personalProjects.map((p) => <ProjectCard key={p.title} p={p} />)}
+      </Box>
     </Box>
   </Box>
 );

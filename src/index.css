@@ -1,16 +1,37 @@
-/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
 :root {
-  --bg-dark: #071022;
-  --card-bg: rgba(14, 24, 40, 0.7);
+  font-family: 'DM Sans', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
-  background: #f5f9fc;
-  color: #071022;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-width: 320px;
+  margin: 0;
 }
 
-section {
-  scroll-margin-top: 88px;
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+::selection { background: rgba(15, 159, 146, 0.22); }
+
+*:focus-visible {
+  outline: 3px solid rgba(15, 159, 146, 0.55);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -8,9 +8,11 @@ const skillLinks = {
   PHP: "https://www.php.net/",
   Laravel: "https://laravel.com/",
   Python: "https://www.python.org/",
+  Django: "https://www.djangoproject.com/",
   Flask: "https://flask.palletsprojects.com/",
   "Node.js": "https://nodejs.org/",
   FastAPI: "https://fastapi.tiangolo.com/",
+  "Generative AI": "https://ai.google.dev/",
   HTML5: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5",
   CSS3: "https://developer.mozilla.org/en-US/docs/Web/CSS",
   JavaScript: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
@@ -44,7 +46,6 @@ const ADVANCED = [
 const INTERMEDIATE = [
   "HTML5",
   "CSS3",
-  "Python",
   "Flask",
   "Material-UI",
   "WordPress",
@@ -58,13 +59,19 @@ const INTERMEDIATE = [
   "CodeIgniter",
 ];
 
+const CURRENTLY_LEARNING = ["Python", "Django", "FastAPI", "Generative AI"];
+
 /* ----------------------------------
    SKILL GROUPS
 ---------------------------------- */
 const skillGroups = [
   {
     title: "Backend Development",
-    items: ["PHP", "Laravel","CodeIgniter","Java","Spring Boot", "Python", "Flask", "RESTful APIs", "SOAP"],
+    items: ["PHP", "Laravel", "CodeIgniter", "Java", "Spring Boot", "Flask", "RESTful APIs", "SOAP"],
+  },
+  {
+    title: "AI & Currently Learning",
+    items: ["Python", "Django", "FastAPI", "Generative AI"],
   },
   {
     title: "Frontend Development",
@@ -96,6 +103,7 @@ const skillGroups = [
    HELPERS
 ---------------------------------- */
 const getSkillLevel = (name) => {
+  if (CURRENTLY_LEARNING.includes(name)) return "Learning";
   if (ADVANCED.includes(name)) return "Advanced";
   if (INTERMEDIATE.includes(name)) return "Intermediate";
   return "Beginner";
@@ -105,6 +113,7 @@ const levelColor = {
   Advanced: "success",
   Intermediate: "warning",
   Beginner: "default",
+  Learning: "info",
 };
 
 /* ----------------------------------
@@ -122,14 +131,15 @@ const SkillItem = ({ name }) => {
         justifyContent: "space-between",
         alignItems: "center",
         p: 1.5,
-        borderRadius: 2,
-        border: "1px solid rgba(255,255,255,0.1)",
-        background: "rgba(255,255,255,0.03)",
+        borderRadius: 2.5,
+        border: "1px solid",
+        borderColor: "divider",
+        bgcolor: "background.default",
         cursor: link ? "pointer" : "default",
         transition: "0.25s",
         "&:hover": {
           transform: link ? "translateY(-2px)" : "none",
-          boxShadow: link ? "0px 0px 12px rgba(0,200,255,0.4)" : "none",
+          boxShadow: link ? 2 : "none",
         },
       }}
     >
@@ -150,20 +160,16 @@ const GroupCard = ({ group }) => (
     elevation={2}
     sx={{
       p: 3,
-      borderRadius: 3,
-      minHeight: 420,
-      maxHeight: 420,
+      borderRadius: 4,
+      minHeight: 360,
       display: "flex",
       flexDirection: "column",
-      overflow: "hidden",
     }}
   >
     <Box
       sx={{
         mb: 2,
-        maxHeight: 64,
-        overflowY: "auto",
-        pr: 1,
+        minHeight: 36,
       }}
     >
       <Typography variant="h6" sx={{ fontWeight: 700 }}>
@@ -175,8 +181,6 @@ const GroupCard = ({ group }) => (
       spacing={1}
       sx={{
         flex: 1,
-        overflowY: "auto",
-        pr: 1,
       }}
     >
       {group.items.map((item) => (
@@ -195,23 +199,27 @@ const Skills = () => {
   );
 
   return (
-    <Box sx={{ py: 10 }}>
-      <Typography variant="h4" align="center" sx={{ mb: 6, fontWeight: 700 }}>
-        Technical Skills
+    <Box component="section" sx={{ py: { xs: 7, md: 9 }, px: { xs: 2.5, sm: 4, lg: 6 } }}>
+      <Box sx={{ width: "100%", mx: "auto" }}>
+      <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 750, letterSpacing: "0.12em" }}>
+        TOOLKIT
+      </Typography>
+      <Typography variant="h3" sx={{ mt: 0.5, mb: 1.5 }}>Skills & continuous learning</Typography>
+
+      <Typography
+        color="text.secondary"
+        sx={{ maxWidth: 720, mb: 4, lineHeight: 1.75 }}
+      >
+        Alongside my current stack, I’m leveling up in AI and expanding my skills
+        in Python, Django, FastAPI, and Generative AI. The more I learn, the more
+        curious I become—so I keep exploring, growing, and never settling.
       </Typography>
 
       <Box
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: 4,
-          px: { xs: 2, md: 4 },
-          marginLeft: "auto",
-          marginRight: "auto",
-          width: "100%",
-          maxWidth: 1800,
-          maxHeight: 900,
-          overflowY: "auto",
+          gap: 2.5,
           alignItems: "stretch",
         }}
       >
@@ -220,6 +228,7 @@ const Skills = () => {
             <GroupCard group={group} />
           </Box>
         ))}
+      </Box>
       </Box>
     </Box>
   );

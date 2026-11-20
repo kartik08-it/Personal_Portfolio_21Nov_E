@@ -18,11 +18,11 @@ import {
 
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import PhoneIcon from "@mui/icons-material/Phone";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import CodeIcon from "@mui/icons-material/Code";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import OrganizationProjects from "../sections/OrganizationProjects";
 
 /* ----------------------------------
@@ -42,17 +42,17 @@ const Home = ({ setActiveSection }) => {
   const educationRef = useRef(null);
   const contactRef = useRef(null);
 
-  const sectionRefs = [
-    { id: "about", ref: aboutRef },
-    { id: "experience", ref: experienceRef },
-    { id: "skills", ref: skillsRef },
-    { id: "organizationprojects", ref: organizationprojectsRef },
-    { id: "projects", ref: projectsRef },
-    { id: "education", ref: educationRef },
-    { id: "contact", ref: contactRef },
-  ];
-
   useEffect(() => {
+    const sectionRefs = [
+      { id: "about", ref: aboutRef },
+      { id: "experience", ref: experienceRef },
+      { id: "skills", ref: skillsRef },
+      { id: "organizationprojects", ref: organizationprojectsRef },
+      { id: "projects", ref: projectsRef },
+      { id: "education", ref: educationRef },
+      { id: "contact", ref: contactRef },
+    ];
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -69,92 +69,88 @@ const Home = ({ setActiveSection }) => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [setActiveSection]);
 
   return (
-    <div>
-      {/* HERO SECTION */}
+    <div id="top">
       <Box
+        component="section"
         sx={{
-          minHeight: "100vh",
+          minHeight: { md: "calc(100vh - 76px)" },
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          px: { xs: 2, sm: 4, md: 8 },
+          px: { xs: 2.5, sm: 4, lg: 6 },
+          py: { xs: 7, md: 8 },
         }}
       >
         <Stack
           direction={{ xs: "column", md: "row" }}
-          spacing={8}
-          sx={{ maxWidth: "1200px", width: "100%" }}
+          spacing={{ xs: 6, md: 8, lg: 12 }}
+          alignItems="center"
+          sx={{ width: "100%" }}
         >
-          {/* LEFT CONTENT */}
-          <Box flex={1}>
+          <Box flex={1.15}>
             <Chip
               icon={<CodeIcon />}
-              label={
-                <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                  Full Stack Developer
-                </Typography>
-              }
+              label="FULL STACK DEVELOPER"
+              size="small"
               sx={{
-                py: 2,
-                px: 3,
-                borderRadius: 3,
-                bgcolor: "rgba(255,255,255,0.05)",
-                "& .MuiChip-icon": { fontSize: "1.8rem" },
+                height: 34,
+                px: 1,
+                borderRadius: 10,
+                bgcolor: "primary.light",
+                color: "primary.dark",
+                fontSize: "0.72rem",
+                fontWeight: 750,
+                letterSpacing: "0.08em",
+                "& .MuiChip-icon": { color: "inherit", fontSize: 17 },
               }}
             />
 
             <Typography
-              variant="h3"
+              variant="h1"
               sx={{
-                fontWeight: 700,
-                mt: 2,
-                lineHeight: 1.2,
-                maxWidth: "550px",
+                fontSize: { xs: "2.85rem", sm: "4rem", md: "5.15rem" },
+                lineHeight: 1.02,
+                mt: 3,
+                maxWidth: 780,
+                fontFamily: '"Manrope", "DM Sans", sans-serif',
               }}
             >
-              Hi, I'm <span style={{ color: "#0ea5e9" }}>Kartik Upadhayay</span>
+              I build software that makes <Box component="span" sx={{ color: "primary.main" }}>complex work feel simple.</Box>
             </Typography>
 
-            <Typography sx={{ mt: 3, opacity: 0.8, maxWidth: "550px" }}>
-              I’m a Full Stack Developer with 2.8 years of hands-on experience building scalable and reliable web applications using Laravel, React, and TypeScript.
-              My core strength lies in backend development—designing clean REST APIs, optimizing databases, and improving system performance. I’ve worked on modernizing legacy systems, including migrating SOAP-based services to RESTful architectures, and implementing security features like role-based access control and two-factor authentication (2FA).
-              On the frontend, I build modular, responsive user interfaces with React and Material UI, focusing on clarity, usability, and maintainability. My experience includes developing admin dashboards, real-time features, and internal tools that streamline everyday business operations.
+            <Typography variant="h5" sx={{ mt: 2.5, fontWeight: 600, color: "text.secondary" }}>
+              Hi, I’m Kartik Upadhayay — a backend-focused full stack developer.
             </Typography>
 
-            {/* CONTACT INFO */}
-            <Stack spacing={1} sx={{ mt: 3 }}>
-              <Stack direction="row" spacing={1} alignItems="center">
-                <EmailIcon fontSize="small" />
-                <Typography
-                  sx={{ cursor: "pointer" }}
-                  onClick={() => window.open(`mailto:${EMAIL}`)}
-                >
-                  {EMAIL}
-                </Typography>
-              </Stack>
+            <Typography sx={{ mt: 2, maxWidth: 660, color: "text.secondary", lineHeight: 1.85 }}>
+              I build reliable web applications with Laravel, React, and TypeScript, from APIs and data workflows to clear, responsive interfaces. I’m currently exploring Python, FastAPI, and generative AI.
+            </Typography>
 
-              <Stack direction="row" spacing={1} alignItems="center">
-                <PhoneIcon fontSize="small" />
-                <Typography>+91 7088586048</Typography>
-              </Stack>
-
-              <Stack direction="row" spacing={1} alignItems="center">
-                <LocationOnIcon fontSize="small" />
-                <Typography>India</Typography>
-              </Stack>
+            <Stack direction="row" spacing={1} flexWrap="wrap" sx={{ mt: 2.5 }}>
+              {["Laravel", "React", "TypeScript"].map((skill) => (
+                <Chip key={skill} label={skill} size="small" variant="outlined" />
+              ))}
+              <Chip
+                icon={<AutoAwesomeIcon />}
+                label="Exploring AI"
+                size="small"
+                color="primary"
+                variant="outlined"
+              />
             </Stack>
 
-            {/* ACTION BUTTONS */}
-            <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} sx={{ mt: 4 }}>
               <Button
                 variant="contained"
                 size="large"
-                onClick={() => window.open(GITHUB_URL, "_blank")}
+                href="#projects"
+                component="a"
+                endIcon={<CodeIcon />}
               >
-                View My Work
+                Explore my work
               </Button>
 
               <Button
@@ -165,45 +161,94 @@ const Home = ({ setActiveSection }) => {
                 href="/SDE_Kartik_Upadhayay_CV.pdf"
                 download
               >
-                Download Resume
+                Download résumé
               </Button>
             </Stack>
 
-            {/* SOCIAL ICONS */}
-            <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
-              <IconButton onClick={() => window.open(GITHUB_URL, "_blank")}>
+            <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 3 }}>
+              <IconButton aria-label="Email Kartik" onClick={() => window.open(`mailto:${EMAIL}`)}>
+                <EmailIcon />
+              </IconButton>
+              <Typography variant="body2" color="text.secondary">{EMAIL}</Typography>
+              <LocationOnIcon fontSize="small" sx={{ ml: 1, color: "text.secondary" }} />
+              <Typography variant="body2" color="text.secondary">India</Typography>
+            </Stack>
+
+            <Stack direction="row" spacing={1} sx={{ mt: 1.5 }}>
+              <IconButton aria-label="GitHub profile" onClick={() => window.open(GITHUB_URL, "_blank", "noopener,noreferrer")}>
                 <GitHubIcon />
               </IconButton>
 
-              <IconButton onClick={() => window.open(LINKEDIN_URL, "_blank")}>
+              <IconButton aria-label="LinkedIn profile" onClick={() => window.open(LINKEDIN_URL, "_blank", "noopener,noreferrer")}>
                 <LinkedInIcon />
-              </IconButton>
-
-              <IconButton onClick={() => window.open(`mailto:${EMAIL}`)}>
-                <MailOutlineIcon />
               </IconButton>
             </Stack>
           </Box>
 
-          {/* RIGHT IMAGE */}
           <Box
-            flex={1}
+            flex={0.85}
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              width: "100%",
             }}
           >
-            <Avatar
-              src="https://blinkexam-sandbox.s3.ap-south-1.amazonaws.com/public/sales/user/images/profilePic/676.png"
-              alt="Profile"
+            <Box
               sx={{
-                width: 350,
-                height: 350,
-                borderRadius: "20px",
-                boxShadow: 4,
+                position: "relative",
+                p: { xs: 2, md: 3 },
+                width: "min(100%, 420px)",
+                borderRadius: 8,
+                background: (theme) => theme.palette.mode === "light"
+                  ? "linear-gradient(145deg, #e8edff 0%, #f6f7fb 52%, #d7f4ef 100%)"
+                  : "linear-gradient(145deg, #202c53 0%, #111a2d 52%, #143632 100%)",
+                border: "1px solid",
+                borderColor: "divider",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  inset: 14,
+                  border: "1px solid",
+                  borderColor: "divider",
+                  borderRadius: 6,
+                  pointerEvents: "none",
+                },
               }}
-            />
+            >
+              <Avatar
+                src="https://blinkexam-sandbox.s3.ap-south-1.amazonaws.com/public/sales/user/images/profilePic/676.png"
+                alt="Kartik Upadhayay"
+                sx={{
+                  width: "100%",
+                  height: "auto",
+                  aspectRatio: "1 / 1",
+                  borderRadius: 5,
+                  position: "relative",
+                  zIndex: 1,
+                  bgcolor: "background.paper",
+                  boxShadow: "0 24px 60px rgba(23,35,59,0.16)",
+                }}
+              />
+              <Box
+                sx={{
+                  position: "absolute",
+                  zIndex: 2,
+                  left: { xs: 18, md: -34 },
+                  bottom: { xs: 16, md: 28 },
+                  px: 2,
+                  py: 1.25,
+                  borderRadius: 3,
+                  bgcolor: "background.paper",
+                  boxShadow: "0 12px 30px rgba(23,35,59,0.12)",
+                  border: "1px solid",
+                  borderColor: "divider",
+                }}
+              >
+                <Typography variant="caption" color="text.secondary">FOCUS</Typography>
+                <Typography variant="body2" sx={{ fontWeight: 700 }}>Backend · Product UI · AI learning</Typography>
+              </Box>
+            </Box>
           </Box>
         </Stack>
       </Box>

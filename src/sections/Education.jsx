@@ -49,7 +49,7 @@ const Card = ({ children }) => (
     elevation={2}
     sx={{
       p: 3,
-      borderRadius: 2,
+      borderRadius: 3,
       background: (t) => t.palette.background.paper,
     }}
   >
@@ -59,15 +59,17 @@ const Card = ({ children }) => (
 
 const Education = () => {
   return (
-    <Box sx={{ py: 10 }}>
-      <Typography variant="h4" align="center" sx={{ mb: 6, fontWeight: 700 }}>
-        Education & Learning
+    <Box component="section" sx={{ py: { xs: 7, md: 9 }, px: { xs: 2.5, sm: 4, lg: 6 } }}>
+      <Box sx={{ width: "100%", mx: "auto" }}>
+      <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 750, letterSpacing: "0.12em" }}>
+        FOUNDATIONS
       </Typography>
+      <Typography variant="h3" sx={{ mt: 0.5, mb: 4 }}>Education & learning</Typography>
 
       <Grid
         container
-        spacing={6}
-        sx={{ width: "90%", mx: "auto", justifyContent: "center" }}
+        spacing={3}
+        sx={{ justifyContent: "center" }}
       >
         {/* LEFT — EDUCATION */}
         <Grid item xs={12} md={6}>
@@ -120,6 +122,7 @@ const Education = () => {
           </Stack>
         </Grid>
       </Grid>
+      </Box>
     </Box>
   );
 };

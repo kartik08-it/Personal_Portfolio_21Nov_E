@@ -13,15 +13,15 @@ const StatCard = ({ icon, title, subtitle }) => (
     sx={{
       p: 3,
       background: (theme) => theme.palette.background.paper,
-      borderRadius: 10,
+      borderRadius: 3,
       display: "flex",
       gap: 2,
       alignItems: "center",
-      boxShadow: (theme) => `0 8px 24px rgba(2,8,23,0.25)`,
+      height: "100%",
     }}
   >
     <Box
-      sx={{ p: 1.25, borderRadius: 1.5, background: "rgba(0,208,201,0.05)" }}
+      sx={{ p: 1.25, borderRadius: 2, bgcolor: "primary.light", color: "primary.main" }}
     >
       {icon}
     </Box>
@@ -38,28 +38,19 @@ const StatCard = ({ icon, title, subtitle }) => (
 
 const About = () => {
   return (
-    <Box sx={{ py: 8, mr: 10, ml: 10 }}>
-      <Typography variant="h4" align="center" sx={{ mb: 4, fontWeight: 700 }}>
-        About Me
-      </Typography>
+    <Box component="section" sx={{ py: { xs: 7, md: 9 }, px: { xs: 2.5, sm: 4, lg: 6 } }}>
+      <Box sx={{ width: "100%", mx: "auto" }}>
+        <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 750, letterSpacing: "0.12em" }}>
+          A LITTLE ABOUT ME
+        </Typography>
+        <Typography variant="h3" sx={{ mt: 0.5, mb: 1.5 }}>About me</Typography>
+        <Typography color="text.secondary" sx={{ maxWidth: 680, mb: 4, lineHeight: 1.75 }}>
+          I enjoy turning complex workflows into reliable software that feels straightforward to use.
+        </Typography>
 
-      <Paper
-        sx={{
-          pb: 4,
-          pt: .5,
-          borderRadius: 4,
-          background: (t) => t.palette.background.paper,
-        }}
-        elevation={2}
-      >
-        <Grid
-          container
-          spacing={3}
-          justifyContent="space-evenly"
-          alignItems="center"
-          sx={{ mt: 5 }}
-        >
-          <Grid item xs={12} md={2.2}>
+        <Paper sx={{ p: { xs: 2, md: 3 }, borderRadius: 4 }}>
+          <Grid container spacing={2} alignItems="stretch">
+          <Grid item xs={12} sm={6} lg={2.4}>
             <StatCard
               icon={<WorkOutlineIcon color="primary" />}
               title="2+ Years"
@@ -67,7 +58,7 @@ const About = () => {
             />
           </Grid>
 
-          <Grid item xs={12} md={2.2}>
+          <Grid item xs={12} sm={6} lg={2.4}>
             <StatCard
               icon={<CodeIcon color="primary" />}
               title="40+"
@@ -75,7 +66,7 @@ const About = () => {
             />
           </Grid>
 
-          <Grid item xs={12} md={2.2}>
+          <Grid item xs={12} sm={6} lg={2.4}>
             <StatCard
               icon={<SettingsSuggestIcon color="primary" />}
               title="Production"
@@ -83,7 +74,7 @@ const About = () => {
             />
           </Grid>
 
-          <Grid item xs={12} md={2.2}>
+          <Grid item xs={12} sm={6} lg={2.4}>
             <StatCard
               icon={<TrendingUpIcon color="primary" />}
               title="45%+"
@@ -91,15 +82,16 @@ const About = () => {
             />
           </Grid>
 
-          <Grid item xs={12} md={2.2}>
+          <Grid item xs={12} sm={6} lg={2.4}>
             <StatCard
               icon={<GroupsIcon color="primary" />}
               title="Agile"
               subtitle="Cross-Team Delivery"
             />
           </Grid>
-        </Grid>
-      </Paper>
+          </Grid>
+        </Paper>
+      </Box>
     </Box>
   );
 };

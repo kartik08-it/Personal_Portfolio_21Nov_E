@@ -21,9 +21,8 @@ const navItems = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
-  { id: "organizationprojects", label: "Professional Projects" },
+  { id: "organizationprojects", label: "Work" },
   { id: "projects", label: "Projects" },
-  { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -31,7 +30,6 @@ const Navbar = ({ activeSection, scrollToSection }) => {
   const theme = useTheme();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  // Toggle drawer
   const toggleDrawer = (open) => () => {
     setDrawerOpen(open);
   };
@@ -43,42 +41,65 @@ const Navbar = ({ activeSection, scrollToSection }) => {
         position="fixed"
         elevation={0}
         sx={{
-          background: theme.palette.background.paper,
+          backgroundColor:
+            theme.palette.mode === "light"
+              ? "rgba(255,255,255,0.84)"
+              : "rgba(11,16,32,0.84)",
           color: theme.palette.text.primary,
-          backdropFilter: "blur(12px)",
-          px: { xs: 2, md: 4 },
-          transition: "all 0.3s ease",
+          backdropFilter: "blur(18px)",
+          borderBottom: `1px solid ${theme.palette.divider}`,
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          {/* LEFT: Name */}
-          <Box
+        <Toolbar
+          sx={{
+            width: "100%",
+            minHeight: { xs: 68, md: 76 },
+            mx: "auto",
+            px: { xs: 2, sm: 3, lg: 5 },
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button
+            color="inherit"
+            aria-label="Go to the top of the page"
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: 1.5,
-              cursor: "pointer",
+              gap: 1.25,
+              p: 0,
+              minWidth: 0,
+              textAlign: "left",
+              "&:hover": { backgroundColor: "transparent" },
             }}
-            onClick={() => scrollToSection("about")}
+            onClick={() => scrollToSection("top")}
           >
-            {/* KU LOGO */}
             <Box
               component="img"
               src="/KULogo.png"
-              alt="kartik Upadhayay"
+              alt=""
               sx={{
-                width: 70,
-                height: 70,
-                borderRadius: 1.5,
+                width: 42,
+                height: 42,
+                borderRadius: 1.25,
+                objectFit: "cover",
               }}
             />
-          </Box>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              <Typography sx={{ fontWeight: 750, lineHeight: 1.1 }}>
+                Kartik Upadhayay
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                Full Stack Developer
+              </Typography>
+            </Box>
+          </Button>
 
-          {/* DESKTOP NAVIGATION */}
           <Box
             sx={{
-              display: { xs: "none", md: "flex" },
-              gap: 3,
+              display: { xs: "none", lg: "flex" },
+              alignItems: "center",
+              gap: 0.25,
             }}
           >
             {navItems.map((item) => (
@@ -87,12 +108,13 @@ const Navbar = ({ activeSection, scrollToSection }) => {
                 onClick={() => scrollToSection(item.id)}
                 sx={{
                   textTransform: "none",
-                  color:
-                    activeSection === item.id
-                      ? theme.palette.primary.main
-                      : theme.palette.text.primary,
+                  color: activeSection === item.id ? "primary.main" : "text.secondary",
                   fontWeight: activeSection === item.id ? 700 : 400,
-                  transition: "color 0.3s ease",
+                  fontSize: "0.88rem",
+                  borderRadius: 2,
+                  px: 1.2,
+                  minWidth: 0,
+                  "&:hover": { bgcolor: "action.hover", color: "text.primary" },
                 }}
               >
                 {item.label}
@@ -100,32 +122,40 @@ const Navbar = ({ activeSection, scrollToSection }) => {
             ))}
           </Box>
 
-          {/* RIGHT SIDE: Theme toggle + Hamburger (mobile) */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <ThemeToggle />
 
-            {/* HAMBURGER ICON for Mobile */}
             <IconButton
-              sx={{ display: { xs: "block", md: "none" } }}
+              aria-label="Open navigation menu"
+              sx={{ display: { xs: "block", lg: "none" } }}
               onClick={toggleDrawer(true)}
             >
               <MenuIcon />
             </IconButton>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={() => scrollToSection("contact")}
+              >
+                Let’s talk
+              </Button>
+            </Box>
           </Box>
         </Toolbar>
       </AppBar>
 
-      {/* MOBILE DRAWER */}
       <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
-        <Box sx={{ width: 240, p: 2 }}>
+        <Box sx={{ width: { xs: 280, sm: 320 }, p: 2.5 }}>
           <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>
-            Menu
+            Navigate
           </Typography>
 
           <List>
             {navItems.map((item) => (
               <ListItem key={item.id} disablePadding>
                 <ListItemButton
+                  selected={activeSection === item.id}
                   onClick={() => {
                     scrollToSection(item.id);
                     setDrawerOpen(false);
@@ -133,15 +163,6 @@ const Navbar = ({ activeSection, scrollToSection }) => {
                 >
                   <ListItemText
                     primary={item.label}
-                    sx={{
-                      "& span": {
-                        color:
-                          activeSection === item.id
-                            ? theme.palette.primary.main
-                            : theme.palette.text.primary,
-                        fontWeight: activeSection === item.id ? 700 : 400,
-                      },
-                    }}
                   />
                 </ListItemButton>
               </ListItem>
