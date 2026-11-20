@@ -69,7 +69,7 @@ const ExperienceCard = ({ exp }) => (
   <Paper
     sx={{
       p: { xs: 2, sm: 3 },
-      borderRadius: 2,
+      borderRadius: 3,
       background: (t) => t.palette.background.paper,
       width: "100%",
     }}
@@ -141,18 +141,22 @@ const ExperienceCard = ({ exp }) => (
 
 const Experience = () => {
   return (
-    <Box sx={{ py: 8 }}>
-      <Typography variant="h4" align="center" sx={{ mb: 4, fontWeight: 700 }}>
-        Experience
+    <Box component="section" sx={{ py: { xs: 7, md: 9 }, px: { xs: 2.5, sm: 4, lg: 6 } }}>
+      <Box sx={{ maxWidth: 1050, mx: "auto" }}>
+      <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 750, letterSpacing: "0.12em" }}>
+        CAREER JOURNEY
+      </Typography>
+      <Typography variant="h3" sx={{ mt: 0.5, mb: 1.5 }}>Experience</Typography>
+      <Typography color="text.secondary" sx={{ maxWidth: 680, mb: 3, lineHeight: 1.75 }}>
+        Growing through product engineering, backend systems, and collaborative delivery.
       </Typography>
 
       <Timeline
         position="right"
         sx={{
-          py: 2,
-          px: { xs: 1, sm: 2, md: 0 },
-          pl: { xs: 0, md: 4 },
-          ml: { xs: 0, md: -22 },
+          py: 1,
+          px: 0,
+          ml: { xs: -1, sm: 0 },
         }}
       >
         {experiences.map((exp, idx) => (
@@ -208,6 +212,7 @@ const Experience = () => {
           </TimelineItem>
         ))}
       </Timeline>
+      </Box>
     </Box>
   );
 };

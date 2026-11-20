@@ -8,11 +8,14 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 const Footer = () => {
   return (
     <Box
+      component="footer"
       sx={{
-        mt: 10,
-        py: 6,
-        px: 4,
+        mt: { xs: 3, md: 5 },
+        py: 4,
+        px: { xs: 2.5, sm: 4, lg: 6 },
         bgcolor: (t) => t.palette.background.default,
+        borderTop: "1px solid",
+        borderColor: "divider",
       }}
     >
       {/* TOP SECTION */}
@@ -29,7 +32,7 @@ const Footer = () => {
       >
         {/* Left */}
         <Box>
-          <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5 }}>
+          <Typography variant="h6" sx={{ fontWeight: 750, mb: 0.5 }}>
             Kartik Upadhayay
           </Typography>
           <Typography color="text.secondary">Full Stack Developer</Typography>
@@ -40,7 +43,8 @@ const Footer = () => {
           <IconButton
             size="large"
             sx={{
-              border: "1px solid rgba(255,255,255,0.2)",
+              border: "1px solid",
+              borderColor: "divider",
               borderRadius: 2,
             }}
             onClick={() =>
@@ -53,7 +57,8 @@ const Footer = () => {
           <IconButton
             size="large"
             sx={{
-              border: "1px solid rgba(255,255,255,0.2)",
+              border: "1px solid",
+              borderColor: "divider",
               borderRadius: 2,
             }}
             onClick={() =>
@@ -66,7 +71,8 @@ const Footer = () => {
           <IconButton
             size="large"
             sx={{
-              border: "1px solid rgba(255,255,255,0.2)",
+              border: "1px solid",
+              borderColor: "divider",
               borderRadius: 2,
             }}
             onClick={() => window.open("mailto:kartiku03@gmail.com")}
@@ -76,7 +82,8 @@ const Footer = () => {
           <IconButton
             size="large"
             sx={{
-              border: "1px solid rgba(255,255,255,0.2)",
+              border: "1px solid",
+              borderColor: "divider",
               borderRadius: 2,
             }}
             onClick={() => window.open("https://wa.me/917088586048", "_blank")}
@@ -95,7 +102,7 @@ const Footer = () => {
         color="text.secondary"
         sx={{ fontSize: "0.9rem" }}
       >
-        © {new Date().getFullYear()} Kartik Gaur. All rights reserved. Built
+        © {new Date().getFullYear()} Kartik Upadhayay. All rights reserved. Built
         with <strong>React & MUI</strong>.
       </Typography>
     </Box>
