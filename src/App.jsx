@@ -6,6 +6,7 @@ import { ThemeContextProvider } from "./theme/ThemeContext";
 import Footer from "./components/Footer/Footer";
 import { Box } from "@mui/material";
 import "./index.css";
+import "./App.css";
 
 function App() {
   const [activeSection, setActiveSection] = useState("about");

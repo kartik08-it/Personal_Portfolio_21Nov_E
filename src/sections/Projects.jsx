@@ -107,8 +107,9 @@ const ProjectCard = ({ p }) => (
       display: "flex",
       flexDirection: "column",
       overflow: "hidden",
-      transition: "transform 180ms ease, box-shadow 180ms ease",
-      "&:hover": { transform: "translateY(-5px)", boxShadow: 8 },
+      borderRadius: 4,
+      transition: "transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease",
+      "&:hover": { transform: "translateY(-6px)", boxShadow: "0 22px 48px rgba(24,37,33,0.12)", borderColor: "primary.main" },
     }}
   >
     <Box
@@ -116,13 +117,13 @@ const ProjectCard = ({ p }) => (
       src={p.img}
       alt={`${p.title} preview`}
       loading="lazy"
-      sx={{ width: "100%", height: 205, objectFit: "cover", bgcolor: "action.hover" }}
+      sx={{ width: "100%", height: { xs: 205, md: 220 }, objectFit: "cover", bgcolor: "action.hover", transition: "transform 350ms ease", "&:hover": { transform: "scale(1.025)" } }}
     />
     <Box sx={{ p: { xs: 2.5, md: 3 }, display: "flex", flexDirection: "column", flex: 1 }}>
       <Typography variant="h6" sx={{ fontWeight: 720, mb: 1 }}>{p.title}</Typography>
       <Typography color="text.secondary" sx={{ mb: 2, lineHeight: 1.7 }}>{p.desc}</Typography>
       <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap" sx={{ mb: 2 }}>
-        {p.features.map((feature) => (
+        {p.features.slice(0, 3).map((feature) => (
           <Chip key={feature} label={feature} size="small" variant="outlined" />
         ))}
       </Stack>
@@ -163,7 +164,7 @@ const ProjectCard = ({ p }) => (
 
 const Projects = () => (
   <Box component="section" sx={{ py: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 4, lg: 6 } }}>
-    <Box sx={{ maxWidth: 1220, mx: "auto" }}>
+    <Box sx={{ width: "100%", mx: "auto" }}>
       <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 750, letterSpacing: "0.12em" }}>
         SELECTED BUILDS
       </Typography>

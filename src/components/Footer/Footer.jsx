@@ -24,7 +24,7 @@ const Footer = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          maxWidth: "1200px",
+          width: "100%",
           mx: "auto",
           flexWrap: "wrap",
           gap: 3,

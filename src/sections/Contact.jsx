@@ -9,7 +9,7 @@ const Contact = () => (
   >
     <Paper
       sx={{
-        maxWidth: 1220,
+        width: "100%",
         mx: "auto",
         p: { xs: 3, sm: 5, md: 7 },
         borderRadius: 5,

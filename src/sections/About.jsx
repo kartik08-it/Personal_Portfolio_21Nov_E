@@ -39,7 +39,7 @@ const StatCard = ({ icon, title, subtitle }) => (
 const About = () => {
   return (
     <Box component="section" sx={{ py: { xs: 7, md: 9 }, px: { xs: 2.5, sm: 4, lg: 6 } }}>
-      <Box sx={{ maxWidth: 1220, mx: "auto" }}>
+      <Box sx={{ width: "100%", mx: "auto" }}>
         <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 750, letterSpacing: "0.12em" }}>
           A LITTLE ABOUT ME
         </Typography>

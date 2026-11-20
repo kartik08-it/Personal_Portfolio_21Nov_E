@@ -4,18 +4,18 @@ import { createTheme } from "@mui/material/styles";
 const lightTheme = createTheme({
   palette: {
     mode: "light",
-    primary: { main: "#3157d5", light: "#e8edff", dark: "#233fa8" },
-    secondary: { main: "#0f9f92" },
+    primary: { main: "#087f73", light: "#e2f3ef", dark: "#07584f" },
+    secondary: { main: "#3157d5" },
     background: {
-      default: "#f6f7fb",
-      paper: "#fff",
+      default: "#f8f8f5",
+      paper: "#ffffff",
     },
-    text: { primary: "#17233b", secondary: "#64718a" },
-    divider: "rgba(23, 35, 59, 0.1)",
+    text: { primary: "#182521", secondary: "#65736e" },
+    divider: "rgba(24, 37, 33, 0.12)",
   },
   shape: { borderRadius: 16 },
   typography: {
-    fontFamily: 'Inter, "Segoe UI", Roboto, Arial, sans-serif',
+    fontFamily: '"DM Sans", "Segoe UI", Roboto, Arial, sans-serif',
     h1: { fontWeight: 750, letterSpacing: "-0.055em" },
     h2: { fontWeight: 750, letterSpacing: "-0.045em" },
     h3: { fontWeight: 750, letterSpacing: "-0.04em" },
@@ -28,8 +28,8 @@ const lightTheme = createTheme({
       styleOverrides: {
         root: {
           backgroundImage: "none",
-          border: "1px solid rgba(23, 35, 59, 0.08)",
-          boxShadow: "0 12px 32px rgba(23, 35, 59, 0.055)",
+          border: "1px solid rgba(24, 37, 33, 0.08)",
+          boxShadow: "0 14px 40px rgba(24, 37, 33, 0.045)",
         },
       },
     },

@@ -88,7 +88,7 @@ const Home = ({ setActiveSection }) => {
           direction={{ xs: "column", md: "row" }}
           spacing={{ xs: 6, md: 8, lg: 12 }}
           alignItems="center"
-          sx={{ maxWidth: 1220, width: "100%" }}
+          sx={{ width: "100%" }}
         >
           <Box flex={1.15}>
             <Chip
@@ -111,21 +111,22 @@ const Home = ({ setActiveSection }) => {
             <Typography
               variant="h1"
               sx={{
-                fontSize: { xs: "2.7rem", sm: "3.5rem", md: "4.1rem" },
-                lineHeight: 1.04,
+                fontSize: { xs: "2.85rem", sm: "4rem", md: "5.15rem" },
+                lineHeight: 1.02,
                 mt: 3,
-                maxWidth: 720,
+                maxWidth: 780,
+                fontFamily: '"Manrope", "DM Sans", sans-serif',
               }}
             >
-              Building useful products, <Box component="span" sx={{ color: "primary.main" }}>one feature at a time.</Box>
+              I build software that makes <Box component="span" sx={{ color: "primary.main" }}>complex work feel simple.</Box>
             </Typography>
 
             <Typography variant="h5" sx={{ mt: 2.5, fontWeight: 600, color: "text.secondary" }}>
-              Hi, I’m Kartik Upadhayay — a backend-focused Full Stack Developer.
+              Hi, I’m Kartik Upadhayay — a backend-focused full stack developer.
             </Typography>
 
             <Typography sx={{ mt: 2, maxWidth: 660, color: "text.secondary", lineHeight: 1.85 }}>
-              I build reliable web applications with Laravel, React, and TypeScript—from APIs and data workflows to clear, responsive interfaces. I’m also exploring AI and expanding my skills in Python, Django, FastAPI, and Generative AI. The more I learn, the more curious I become; I keep growing and never settle.
+              I build reliable web applications with Laravel, React, and TypeScript, from APIs and data workflows to clear, responsive interfaces. I’m currently exploring Python, FastAPI, and generative AI.
             </Typography>
 
             <Stack direction="row" spacing={1} flexWrap="wrap" sx={{ mt: 2.5 }}>

@@ -21,9 +21,8 @@ const navItems = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
-  { id: "organizationprojects", label: "Professional Work" },
+  { id: "organizationprojects", label: "Work" },
   { id: "projects", label: "Projects" },
-  { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -53,7 +52,6 @@ const Navbar = ({ activeSection, scrollToSection }) => {
       >
         <Toolbar
           sx={{
-            maxWidth: 1400,
             width: "100%",
             minHeight: { xs: 68, md: 76 },
             mx: "auto",
@@ -99,7 +97,7 @@ const Navbar = ({ activeSection, scrollToSection }) => {
 
           <Box
             sx={{
-              display: { xs: "none", xl: "flex" },
+              display: { xs: "none", lg: "flex" },
               alignItems: "center",
               gap: 0.25,
             }}
@@ -129,12 +127,12 @@ const Navbar = ({ activeSection, scrollToSection }) => {
 
             <IconButton
               aria-label="Open navigation menu"
-              sx={{ display: { xs: "block", xl: "none" } }}
+              sx={{ display: { xs: "block", lg: "none" } }}
               onClick={toggleDrawer(true)}
             >
               <MenuIcon />
             </IconButton>
-            <Box sx={{ display: { xs: "none", md: "block", xl: "none" } }}>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <Button
                 variant="contained"
                 size="small"
