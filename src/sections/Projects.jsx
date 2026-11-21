@@ -83,7 +83,7 @@ const personalProjects = [
 
   {
     title: "HRMS All-in-One Panel",
-    desc: "HRMS platform with employee, admin, and HR modules using Java, Spring Boot, React, and MySQL.",
+    desc: "HRMS platform with employee, admin, and HR modules using Python, Django, React, and MySQL.",
     impact:
       "Delivered a complete role-based HR management solution that supports employee self-service, HR workflows, and admin governance.",
     img: "/Upcoming.png",
@@ -94,7 +94,7 @@ const personalProjects = [
       "Role-Based Access",
       "REST API Modules",
     ],
-    stack: ["Java", "Spring Boot", "React.js", "MySQL"],
+    stack: ["Python", "Django", "React.js", "MySQL"],
     isPersonal: true,
     demoLink: "",
     codeLink: "",

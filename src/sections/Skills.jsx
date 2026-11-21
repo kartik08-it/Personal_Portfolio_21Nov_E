@@ -19,7 +19,6 @@ const skillLinks = {
   "React.js": "https://react.dev/",
   TypeScript: "https://www.typescriptlang.org/",
   MySQL: "https://www.mysql.com/",
-  MongoDB: "https://www.mongodb.com/",
   AWS: "https://aws.amazon.com/",
   "RESTful APIs": "https://restfulapi.net/",
   SOAP: "https://www.w3.org/TR/soap/",
@@ -54,8 +53,6 @@ const INTERMEDIATE = [
   "Postman",
   "Ubuntu/Linux",
   "Agile/Scrum",
-  "Java",
-  "Spring Boot",
   "CodeIgniter",
 ];
 
@@ -67,7 +64,7 @@ const CURRENTLY_LEARNING = ["Python", "Django", "FastAPI", "Generative AI"];
 const skillGroups = [
   {
     title: "Backend Development",
-    items: ["PHP", "Laravel", "CodeIgniter", "Java", "Spring Boot", "Flask", "RESTful APIs", "SOAP"],
+    items: ["PHP", "Laravel", "CodeIgniter", "Flask", "RESTful APIs", "SOAP"],
   },
   {
     title: "AI & Currently Learning",
@@ -87,7 +84,7 @@ const skillGroups = [
   },
   {
     title: "Databases",
-    items: ["MySQL", "MongoDB"],
+    items: ["MySQL"],
   },
   {
     title: "Tools & Platforms",
